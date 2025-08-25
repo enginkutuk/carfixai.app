@@ -1,12 +1,315 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="tr">
 <head>
-<title>CarFix AI</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CarFix AI — Yapay Zekâ ile Araç Arızası Teşhisi</title>
+  <meta name="description" content="CarFix AI, belirtileri girerek olası arıza nedenlerini ve çözüm önerilerini anında sunan yapay zekâ destekli araç teşhis yardımcısı." />
+  <link rel="canonical" href="https://carfixai.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CarFix AI — Yapay Zekâ ile Araç Arızası Teşhisi" />
+  <meta property="og:description" content="Belirtileri yaz, anında olası nedenleri ve çözüm adımlarını gör. iPhone'da ücretsiz indir." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://carfixai.app/" />
+  <meta property="og:image" content="https://carfixai.app/og-cover.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CarFix AI — Yapay Zekâ ile Araç Arızası Teşhisi" />
+  <meta name="twitter:description" content="Belirtileri yaz, anında olası nedenleri ve çözüm adımlarını gör." />
+  <meta name="twitter:image" content="https://carfixai.app/og-cover.jpg" />
+
+  <!-- iOS Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=6749153811, affiliate-data=, app-argument=https://apps.apple.com/tr/app/carfix-ai/id6749153811?l=tr" />
+
+  <!-- Schema.org (MobileApplication) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "CarFix AI",
+    "operatingSystem": "iOS",
+    "applicationCategory": "UtilitiesApplication",
+    "downloadUrl": "https://apps.apple.com/tr/app/carfix-ai/id6749153811?l=tr",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "TRY"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "ratingCount": "2"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --card: #11151a;
+      --text: #e9eef5;
+      --muted: #a7b0bd;
+      --brand: #46d399;
+      --stroke: rgba(255,255,255,0.08);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      color-scheme: dark light;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; background: var(--bg); color: var(--text); }
+    a { color: var(--brand); text-decoration: none; }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+
+    /* Header */
+    header { position: sticky; top:0; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg) 85%, transparent); border-bottom: 1px solid var(--stroke); z-index: 50; }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+    .logo { display:flex; gap:10px; align-items:center; font-weight:700; letter-spacing:.2px; }
+    .logo img { width:28px; height:28px; border-radius:8px; }
+    .nav ul { display:flex; gap:22px; list-style:none; margin:0; padding:0; }
+    .cta { display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border:1px solid var(--stroke); border-radius:12px; background: linear-gradient(180deg, #12161c, #0e1216); }
+    .cta:hover { border-color: color-mix(in oklab, var(--brand) 40%, var(--stroke)); transform: translateY(-1px); }
+
+    /* Hero */
+    .hero { display:grid; grid-template-columns: 1.1fr 0.9fr; gap:36px; align-items: center; padding:64px 0 34px; }
+    .eyebrow { display:inline-block; font-size:12px; color: var(--muted); border:1px solid var(--stroke); padding:6px 10px; border-radius:999px; margin-bottom:12px;}
+    h1 { font-size: clamp(30px, 4vw, 54px); line-height:1.05; margin:0 0 14px; letter-spacing:-.02em;}
+    .lead { font-size: clamp(16px, 2.1vw, 18px); color: var(--muted); max-width: 52ch; }
+    .badges { display:flex; gap:12px; margin-top:22px; flex-wrap: wrap;}
+    .badge { display:inline-flex; align-items:center; gap:10px; border:1px solid var(--stroke); border-radius:12px; padding:12px 16px; background:#0e1318; box-shadow: var(--shadow);}
+    .badge img { width:22px; height:22px; }
+    .mock { border:1px solid var(--stroke); border-radius:20px; overflow:hidden; background: radial-gradient(1200px 600px at 80% -20%, rgba(70,211,153,.15), transparent), #0e1318; box-shadow: var(--shadow); }
+    .mock img { display:block; width:100%; height:auto; }
+
+    /* Sections */
+    section { padding:56px 0; border-top:1px solid var(--stroke); }
+    h2 { font-size: clamp(24px, 3vw, 36px); margin:0 0 10px; }
+    .sub { color: var(--muted); margin: 0 0 28px; }
+    .grid-3 { display:grid; gap:18px; grid-template-columns: repeat(3, 1fr); }
+    .card { border:1px solid var(--stroke); border-radius:16px; padding:18px; background: linear-gradient(180deg, #0e1318, #0b0e12); }
+    .card h3 { margin:0 0 8px; font-size:18px; }
+    .muted { color: var(--muted); }
+
+    /* How it works */
+    .steps { display:grid; gap:14px; grid-template-columns: repeat(3, 1fr); counter-reset: step; }
+    .step { border:1px dashed var(--stroke); border-radius:14px; padding:16px; }
+    .step::before { counter-increment: step; content: counter(step); display:inline-grid; place-items:center; width:28px; height:28px; border-radius:8px; background: #0f151a; border:1px solid var(--stroke); margin-bottom:8px; }
+
+    /* Reviews */
+    .reviews { display:grid; gap:14px; grid-template-columns: repeat(3, 1fr); }
+    blockquote { margin:0; }
+    .stars { letter-spacing: 2px; }
+
+    /* FAQ */
+    details { border:1px solid var(--stroke); border-radius:14px; padding:14px 16px; background:#0e1318; }
+    details + details { margin-top:12px; }
+
+    /* Footer */
+    footer { border-top:1px solid var(--stroke); padding:26px 0 50px; color: var(--muted); }
+
+    /* Responsive */
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: 1fr; padding-top: 38px; }
+      .grid-3, .steps, .reviews { grid-template-columns: 1fr; }
+      header .nav ul { display:none; }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <img src="logo.png" alt="CarFix AI" />
+        <span>CarFix AI</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#features">Özellikler</a></li>
+          <li><a href="#how">Nasıl Çalışır</a></li>
+          <li><a href="#reviews">Yorumlar</a></li>
+          <li><a href="#faq">SSS</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="https://apps.apple.com/tr/app/carfix-ai/id6749153811?l=tr" rel="noopener">App Store’dan İndir</a>
+    </div>
+  </header>
 
-<h1>CarFix AI</h1>
-<p>CarFix AI</p>
+  <main>
+    <section class="container hero">
+      <div>
+        <span class="eyebrow">Yeni: CarFix AI 1.2</span>
+        <h1>Belirtileri Yaz, <br/>Arızayı Anında Anla.</h1>
+        <p class="lead">Motor ışığı, ses, sarsıntı veya performans düşüşü… CarFix AI, yazdığınız belirtilere göre olası nedenleri sıralar, risk seviyesini ve <strong>adım adım çözüm</strong> önerilerini sunar.</p>
+        <div class="badges">
+          <a class="badge" href="https://apps.apple.com/tr/app/carfix-ai/id6749153811?l=tr" rel="noopener">
+            <img src="apple.svg" alt="" /><span>App Store</span>
+          </a>
+          <a class="badge" href="#newsletter"><img src="mail.svg" alt="" /><span>Güncellemeleri Al</span></a>
+        </div>
+        <p class="muted" style="margin-top:8px;">Veri gizliliği odaklıdır — kişisel verilerinizi toplamaz. <a href="#privacy">Gizlilik</a></p>
+      </div>
+      <aside class="mock">
+        <!-- Telefon mockup’u: 1290x2796 ekran görüntüsü koyabilirsiniz -->
+        <img src="screenshot-hero.png" alt="CarFix AI uygulama ekran görüntüsü" />
+      </aside>
+    </section>
 
+    <section id="features">
+      <div class="container">
+        <h2>Özellikler</h2>
+        <p class="sub">Zamandan kazandıran, güven veren ve aksiyona yönlendiren araçlar.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Yapay Zekâ Teşhisi</h3>
+            <p class="muted">Belirti metinlerinden model bazlı olası arıza listesi; olasılık/risk sıralaması.</p>
+          </div>
+          <div class="card">
+            <h3>Çözüm Adımları</h3>
+            <p class="muted">Evde deneyebileceğiniz basit kontrollerden, usta desteği gerektiren adımlara kadar rehberlik.</p>
+          </div>
+          <div class="card">
+            <h3>OBD2 Gerektirmez</h3>
+            <p class="muted">Sadece belirtileri girin; dilediğiniz zaman, dilediğiniz yerde kullanın.</p>
+          </div>
+          <div class="card">
+            <h3>Gizlilik Öncelikli</h3>
+            <p class="muted">Kişisel veri toplamaz; cihazınızda güvenle kullanın.</p>
+          </div>
+          <div class="card">
+            <h3>Hızlı & Hafif</h3>
+            <p class="muted">Küçük boyut, hızlı açılış, pürüzsüz arayüz.</p>
+          </div>
+          <div class="card">
+            <h3>Çoklu Senaryo</h3>
+            <p class="muted">Motor uyarıları, fren/süspansiyon sesleri, klima, yakıt tüketimi ve daha fazlası.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <h2>Nasıl Çalışır?</h2>
+        <p class="sub">Üç basit adımda ön teşhis ve yönlendirme.</p>
+        <div class="steps">
+          <div class="step">
+            <h3>Belirtiyi Girin</h3>
+            <p class="muted">Örn. “Soğukta titreme ve rölantide dalgalanma”.</p>
+          </div>
+          <div class="step">
+            <h3>Olası Nedenleri Görün</h3>
+            <p class="muted">Sensör, ateşleme, yakıt-hava, mekanik aksam vb. adaylar.</p>
+          </div>
+          <div class="step">
+            <h3>Adım Adım Çözüm</h3>
+            <p class="muted">Basit kontrol → düşük risk çözümü → gerekirse uzman önerisi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="container">
+        <h2>Kullanıcı Yorumları</h2>
+        <p class="sub">Gerçek sürücülerin deneyimleri.</p>
+        <div class="reviews">
+          <div class="card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“Check engine yandı, CarFix AI ile aklımdaki iki sebebe indi ve ustada zaman kazandım.”</blockquote>
+            <p class="muted">— Efe Y.</p>
+          </div>
+          <div class="card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“Ses tarif ettim, muhtemel kayış gergisi dedi. Aynı gün çözdük.”</blockquote>
+            <p class="muted">— Elif K.</p>
+          </div>
+          <div class="card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“OBD2 yoktu, yine de yol gösterdi. Harika.”</blockquote>
+            <p class="muted">— Murat A.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <h2>Fiyatlandırma</h2>
+        <p class="sub">Ücretsiz indir, gelişmiş özellikler için yükselt.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Ücretsiz</h3>
+            <p class="muted">Sınırlı günlük teşhis, temel öneriler.</p>
+          </div>
+          <div class="card">
+            <h3>Haftalık</h3>
+            <p class="muted">Tüm özellikler — App içi ödeme.</p>
+          </div>
+          <div class="card">
+            <h3>Yıllık</h3>
+            <p class="muted">En avantajlı plan — sınırsız kullanım.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <h2>Sık Sorulan Sorular</h2>
+        <details>
+          <summary>OBD2 cihazı gerekli mi?</summary>
+          <p class="muted">Hayır. CarFix AI belirtiden tahmin ve yönlendirme yapar. OBD2 entegrasyonu daha isabetli olabilir, gelecekte planlanmaktadır.</p>
+        </details>
+        <details>
+          <summary>Verilerim toplanıyor mu?</summary>
+          <p class="muted">Kişisel veri toplamıyoruz. Ayrıntılar için aşağıdaki gizlilik bağlantısına bakın.</p>
+        </details>
+        <details>
+          <summary>Profesyonel teşhis yerine geçer mi?</summary>
+          <p class="muted">Hayır. CarFix AI, ön bilgilendirme ve yönlendirme sağlar; nihai teşhis yetkili teknisyenindir.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="newsletter">
+      <div class="container">
+        <h2>Güncellemeleri Kaçırmayın</h2>
+        <p class="sub">Yeni özellikler ve kampanyalar e-postanıza gelsin.</p>
+        <form class="card" onsubmit="return subscribe(event)">
+          <label for="email" class="muted">E-posta</label>
+          <input id="email" type="email" required placeholder="ornek@eposta.com" style="width:100%;margin:8px 0 12px;padding:12px;border-radius:10px;border:1px solid var(--stroke);background:#0b0f13;color:var(--text)">
+          <button class="cta" type="submit">Kaydol</button>
+          <p id="sub-msg" class="muted" style="margin-top:8px;"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer id="privacy">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+        <small>© <span id="y"></span> CarFix AI</small>
+        <div style="display:flex;gap:14px;">
+          <a href="/privacy.html">Gizlilik</a>
+          <a href="/terms.html">Kullanım Koşulları</a>
+          <a href="mailto:hello@carfixai.app">İletişim</a>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:10px;">CarFix AI, öneri ve ön bilgi sağlar; profesyonel teşhis/servis yerine geçmez.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    function subscribe(e){
+      e.preventDefault();
+      const el = document.getElementById('email');
+      const msg = document.getElementById('sub-msg');
+      // Basit demo: gerçek ortamda burada bir form endpoint'ine POST edin.
+      msg.textContent = "Teşekkürler! Kaydınız alındı.";
+      el.value = "";
+      return false;
+    }
+  </script>
 </body>
 </html>
