@@ -3,8 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CarFix AI — Yapay Zekâ ile Araç Arızası Teşhisi</title>
-  <meta name="description" content="CarFix AI, belirtileri girerek olası arıza nedenlerini ve çözüm önerilerini anında sunan yapay zekâ destekli araç teşhis yardımcısı." />
+  <title data-tr="CarFix AI — Yapay Zekâ ile Araç Arızası Teşhisi" data-en="CarFix AI — AI-Powered Vehicle Diagnostics">CarFix AI — Yapay Zekâ ile Araç Arızası Teşhisi</title>
+  <meta name="description" data-tr="CarFix AI, belirtileri girerek olası arıza nedenlerini ve çözüm önerilerini anında sunan yapay zekâ destekli araç teşhis yardımcısı." data-en="CarFix AI is an AI-powered vehicle diagnostic assistant that instantly provides possible fault causes and solution recommendations by entering symptoms." content="CarFix AI, belirtileri girerek olası arıza nedenlerini ve çözüm önerilerini anında sunan yapay zekâ destekli araç teşhis yardımcısı." />
+  <meta name="keywords" content="araç arıza teşhisi, car fault detection, yapay zeka, AI, motor arızası, car repair, otomobil bakım, araç teşhisi, car diagnosis, engine light, check engine, araç sorunları, car problems, otomobil arıza, vehicle fault" />
+  <meta name="author" content="CarFix AI" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="Turkish, English" />
+  <meta name="revisit-after" content="7 days" />
+  <meta name="distribution" content="global" />
+  <meta name="rating" content="general" />
+  <meta name="theme-color" content="#3b82f6" />
+  <meta name="msapplication-TileColor" content="#3b82f6" />
+  <link rel="icon" type="image/png" href="carfixai-logo.png" />
+  <link rel="apple-touch-icon" href="carfixai-logo.png" />
   <link rel="canonical" href="https://carfixai.app/" />
 
   <!-- Open Graph -->
@@ -45,271 +56,2119 @@
   }
   </script>
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #0b0d10;
-      --card: #11151a;
-      --text: #e9eef5;
-      --muted: #a7b0bd;
-      --brand: #46d399;
-      --stroke: rgba(255,255,255,0.08);
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      color-scheme: dark light;
+      /* Light Theme */
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-card: #ffffff;
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --text-muted: #94a3b8;
+      --brand-primary: #3b82f6;
+      --brand-secondary: #1d4ed8;
+      --border: #e2e8f0;
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     }
-    * { box-sizing: border-box; }
-    html, body { margin:0; padding:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; background: var(--bg); color: var(--text); }
-    a { color: var(--brand); text-decoration: none; }
-    .container { width: min(1100px, 92%); margin: 0 auto; }
+
+    [data-theme="dark"] {
+      /* Dark Theme */
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: #334155;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --brand-primary: #60a5fa;
+      --brand-secondary: #3b82f6;
+      --border: #475569;
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+    }
+
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body { 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .animate-fade-in-left {
+      animation: fadeInLeft 0.8s ease-out;
+    }
+
+    .animate-fade-in-right {
+      animation: fadeInRight 0.8s ease-out;
+    }
+
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .animate-pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* Utility Classes */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.875rem;
+    }
+
+    .btn-primary {
+      background: var(--gradient-primary);
+      color: white;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 2px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--brand-primary);
+      transform: translateY(-2px);
+    }
 
     /* Header */
-    header { position: sticky; top:0; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg) 85%, transparent); border-bottom: 1px solid var(--stroke); z-index: 50; }
-    .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
-    .logo { display:flex; gap:10px; align-items:center; font-weight:700; letter-spacing:.2px; }
-    .logo img { width:28px; height:28px; border-radius:8px; }
-    .nav ul { display:flex; gap:22px; list-style:none; margin:0; padding:0; }
-    .cta { display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border:1px solid var(--stroke); border-radius:12px; background: linear-gradient(180deg, #12161c, #0e1216); }
-    .cta:hover { border-color: color-mix(in oklab, var(--brand) 40%, var(--stroke)); transform: translateY(-1px); }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
 
-    /* Hero */
-    .hero { display:grid; grid-template-columns: 1.1fr 0.9fr; gap:36px; align-items: center; padding:64px 0 34px; }
-    .eyebrow { display:inline-block; font-size:12px; color: var(--muted); border:1px solid var(--stroke); padding:6px 10px; border-radius:999px; margin-bottom:12px;}
-    h1 { font-size: clamp(30px, 4vw, 54px); line-height:1.05; margin:0 0 14px; letter-spacing:-.02em;}
-    .lead { font-size: clamp(16px, 2.1vw, 18px); color: var(--muted); max-width: 52ch; }
-    .badges { display:flex; gap:12px; margin-top:22px; flex-wrap: wrap;}
-    .badge { display:inline-flex; align-items:center; gap:10px; border:1px solid var(--stroke); border-radius:12px; padding:12px 16px; background:#0e1318; box-shadow: var(--shadow);}
-    .badge img { width:22px; height:22px; }
-    .mock { border:1px solid var(--stroke); border-radius:20px; overflow:hidden; background: radial-gradient(1200px 600px at 80% -20%, rgba(70,211,153,.15), transparent), #0e1318; box-shadow: var(--shadow); }
-    .mock img { display:block; width:100%; height:auto; }
+    [data-theme="dark"] header {
+      background: rgba(15, 23, 42, 0.95);
+    }
 
-    /* Sections */
-    section { padding:56px 0; border-top:1px solid var(--stroke); }
-    h2 { font-size: clamp(24px, 3vw, 36px); margin:0 0 10px; }
-    .sub { color: var(--muted); margin: 0 0 28px; }
-    .grid-3 { display:grid; gap:18px; grid-template-columns: repeat(3, 1fr); }
-    .card { border:1px solid var(--stroke); border-radius:16px; padding:18px; background: linear-gradient(180deg, #0e1318, #0b0e12); }
-    .card h3 { margin:0 0 8px; font-size:18px; }
-    .muted { color: var(--muted); }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
 
-    /* How it works */
-    .steps { display:grid; gap:14px; grid-template-columns: repeat(3, 1fr); counter-reset: step; }
-    .step { border:1px dashed var(--stroke); border-radius:14px; padding:16px; }
-    .step::before { counter-increment: step; content: counter(step); display:inline-grid; place-items:center; width:28px; height:28px; border-radius:8px; background: #0f151a; border:1px solid var(--stroke); margin-bottom:8px; }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+         .logo-icon {
+       width: 2.5rem;
+       height: 2.5rem;
+       background: var(--gradient-primary);
+       border-radius: 0.75rem;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       color: white;
+       font-weight: 700;
+     }
+
+     .logo-img {
+       width: 2.5rem;
+       height: 2.5rem;
+       border-radius: 0.75rem;
+       object-fit: contain;
+     }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-menu ul {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-link:hover {
+      color: var(--brand-primary);
+      transform: translateY(-1px);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: var(--gradient-primary);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--bg-secondary);
+      color: var(--brand-primary);
+    }
+
+    .language-toggle {
+      background: var(--bg-secondary);
+      border: 2px solid var(--border);
+      color: var(--text-secondary);
+      padding: 0.5rem 1rem;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    .language-toggle:hover {
+      border-color: var(--brand-primary);
+      color: var(--brand-primary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 8rem 0 4rem;
+      background: var(--bg-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--gradient-primary);
+      opacity: 0.05;
+      animation: gradient 15s ease infinite;
+      background-size: 400% 400%;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text {
+      animation: fadeInLeft 1s ease-out;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--gradient-success);
+      color: white;
+      border-radius: 2rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .hero-image {
+      animation: fadeInRight 1s ease-out;
+      position: relative;
+    }
+
+    .phone-mockup {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      position: relative;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .phone-mockup img {
+      width: 100%;
+      height: auto;
+      border-radius: 2rem;
+      box-shadow: var(--shadow-xl);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 6rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--brand-primary);
+    }
+
+    .feature-icon {
+      width: 4rem;
+      height: 4rem;
+      background: var(--gradient-primary);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+         .feature-description {
+       color: var(--text-secondary);
+       line-height: 1.6;
+       margin-bottom: 1.5rem;
+     }
+
+     .feature-preview {
+       text-align: center;
+       margin-top: 1rem;
+     }
+
+     .feature-preview img {
+       max-width: 120px;
+       height: auto;
+       border-radius: 0.75rem;
+       box-shadow: var(--shadow);
+       transition: all 0.3s ease;
+       opacity: 0.8;
+     }
+
+     .feature-card:hover .feature-preview img {
+       opacity: 1;
+       transform: translateY(-3px);
+       box-shadow: var(--shadow-lg);
+     }
+
+    /* How It Works */
+    .how-it-works {
+      padding: 6rem 0;
+      background: var(--bg-secondary);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 3rem;
+      height: 3rem;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      margin: 0 auto 1.5rem;
+      font-size: 1.25rem;
+    }
+
+    .step-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .step-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
 
     /* Reviews */
-    .reviews { display:grid; gap:14px; grid-template-columns: repeat(3, 1fr); }
-    blockquote { margin:0; }
-    .stars { letter-spacing: 2px; }
+    .reviews {
+      padding: 6rem 0;
+    }
 
-    /* FAQ */
-    details { border:1px solid var(--stroke); border-radius:14px; padding:14px 16px; background:#0e1318; }
-    details + details { margin-top:12px; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .review-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .review-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .review-stars {
+      color: #fbbf24;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .review-text {
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .review-author {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 6rem 0;
+      background: var(--gradient-primary);
+      color: white;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--brand-primary);
+    }
+
+    .btn-white:hover {
+      background: #f8fafc;
+      transform: translateY(-2px);
+    }
 
     /* Footer */
-    footer { border-top:1px solid var(--stroke); padding:26px 0 50px; color: var(--muted); }
+    footer {
+      background: var(--bg-secondary);
+      padding: 3rem 0 1rem;
+      border-top: 1px solid var(--border);
+    }
 
-    /* Responsive */
-    @media (max-width: 920px) {
-      .hero { grid-template-columns: 1fr; padding-top: 38px; }
-      .grid-3, .steps, .reviews { grid-template-columns: 1fr; }
-      header .nav ul { display:none; }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      line-height: 1.6;
+    }
+
+    .footer-section a:hover {
+      color: var(--brand-primary);
+    }
+
+         .footer-bottom {
+       border-top: 1px solid var(--border);
+       padding-top: 1rem;
+       text-align: center;
+       color: var(--text-muted);
+     }
+
+
+     /* Hero Slider Styles */
+     .hero-slider {
+       position: relative;
+       max-width: 320px;
+       height: 692px; /* Fallback height */
+       aspect-ratio: 9 / 19.5; /* iPhone aspect ratio */
+       margin: 0 auto;
+       animation: float 6s ease-in-out infinite;
+       background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+       border-radius: 2.5rem;
+       padding: 1rem;
+       box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+     }
+
+     [data-theme="dark"] .hero-slider {
+       background: linear-gradient(145deg, #1e293b, #0f172a);
+     }
+
+     .hero-slide {
+       position: absolute;
+       top: 1rem;
+       left: 1rem;
+       right: 1rem;
+       bottom: 4rem;
+       opacity: 0;
+       transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+       border-radius: 2rem;
+       overflow: hidden;
+     }
+
+     .hero-slide.active {
+       opacity: 1;
+       transform: translateY(0);
+     }
+
+     .hero-slide:not(.active) {
+       transform: translateY(20px);
+     }
+
+     .hero-slide img {
+       width: 100%;
+       height: 100%;
+       object-fit: contain;
+       object-position: center;
+       border-radius: 1.5rem;
+       transition: all 0.4s ease;
+       cursor: pointer;
+     }
+
+     .hero-slide img:hover {
+       transform: scale(1.02);
+       filter: brightness(1.1);
+     }
+
+     .hero-slider-dots {
+       position: absolute;
+       bottom: 1rem;
+       left: 50%;
+       transform: translateX(-50%);
+       display: flex;
+       gap: 0.75rem;
+       background: rgba(0, 0, 0, 0.3);
+       backdrop-filter: blur(10px);
+       padding: 0.75rem 1.5rem;
+       border-radius: 2rem;
+     }
+
+     .hero-dot {
+       width: 10px;
+       height: 10px;
+       border-radius: 50%;
+       background: rgba(255, 255, 255, 0.5);
+       cursor: pointer;
+       transition: all 0.3s ease;
+       position: relative;
+     }
+
+     .hero-dot:hover {
+       background: rgba(255, 255, 255, 0.8);
+       transform: scale(1.2);
+     }
+
+     .hero-dot.active {
+       background: var(--brand-primary);
+       transform: scale(1.3);
+       box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+     }
+
+     .hero-dot.active::after {
+       content: '';
+       position: absolute;
+       top: -3px;
+       left: -3px;
+       right: -3px;
+       bottom: -3px;
+       border: 2px solid var(--brand-primary);
+       border-radius: 50%;
+       opacity: 0.3;
+       animation: pulse-ring 2s ease-out infinite;
+     }
+
+     @keyframes pulse-ring {
+       0% {
+         transform: scale(1);
+         opacity: 0.3;
+       }
+       100% {
+         transform: scale(1.5);
+         opacity: 0;
+       }
+     }
+
+     /* Slider Navigation Arrows */
+     .hero-slider-nav {
+       position: absolute;
+       top: 50%;
+       transform: translateY(-50%);
+       background: rgba(255, 255, 255, 0.9);
+       border: none;
+       width: 45px;
+       height: 45px;
+       border-radius: 50%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       cursor: pointer;
+       transition: all 0.3s ease;
+       font-size: 1.2rem;
+       color: var(--text-primary);
+       box-shadow: var(--shadow);
+       opacity: 0;
+       pointer-events: none;
+     }
+
+     .hero-slider:hover .hero-slider-nav {
+       opacity: 1;
+       pointer-events: auto;
+     }
+
+     .hero-slider-nav:hover {
+       background: white;
+       transform: translateY(-50%) scale(1.1);
+       box-shadow: var(--shadow-lg);
+     }
+
+     .hero-slider-nav.prev {
+       left: -20px;
+     }
+
+     .hero-slider-nav.next {
+       right: -20px;
+     }
+
+     [data-theme="dark"] .hero-slider-nav {
+       background: rgba(51, 65, 85, 0.9);
+       color: var(--text-primary);
+     }
+
+     [data-theme="dark"] .hero-slider-nav:hover {
+       background: var(--bg-card);
+     }
+
+     /* Modern Workflow Styles */
+     .workflow-container {
+       max-width: 800px;
+       margin: 4rem auto;
+     }
+
+     .workflow-step {
+       display: flex;
+       gap: 2rem;
+       align-items: flex-start;
+       margin: 3rem 0;
+       padding: 2rem;
+       background: var(--bg-card);
+       border-radius: 1.5rem;
+       box-shadow: var(--shadow);
+       border: 1px solid var(--border);
+       transition: all 0.3s ease;
+     }
+
+     .workflow-step:hover {
+       transform: translateY(-5px);
+       box-shadow: var(--shadow-xl);
+       border-color: var(--brand-primary);
+     }
+
+     .step-visual {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       min-width: 120px;
+     }
+
+     .step-circle {
+       width: 50px;
+       height: 50px;
+       background: var(--gradient-primary);
+       border-radius: 50%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       color: white;
+       font-weight: 700;
+       font-size: 1.5rem;
+       margin-bottom: 1rem;
+     }
+
+     .step-icon-large {
+       font-size: 3rem;
+       margin-bottom: 1rem;
+     }
+
+     .step-content {
+       flex: 1;
+     }
+
+     .step-content h3 {
+       font-size: 1.5rem;
+       font-weight: 700;
+       margin-bottom: 1rem;
+       color: var(--text-primary);
+     }
+
+     .step-content p {
+       color: var(--text-secondary);
+       line-height: 1.6;
+       margin-bottom: 1.5rem;
+     }
+
+     .step-example {
+       background: var(--bg-secondary);
+       border: 1px solid var(--border);
+       border-radius: 0.75rem;
+       padding: 1rem;
+       font-style: italic;
+       color: var(--text-secondary);
+       position: relative;
+     }
+
+     .step-example::before {
+       content: '"';
+       font-size: 2rem;
+       color: var(--brand-primary);
+       position: absolute;
+       top: -5px;
+       left: 10px;
+     }
+
+     .ai-processing {
+       background: var(--bg-secondary);
+       border-radius: 0.75rem;
+       padding: 1rem;
+       position: relative;
+       overflow: hidden;
+     }
+
+     .processing-bar {
+       height: 4px;
+       background: var(--gradient-primary);
+       border-radius: 2px;
+       animation: processing 2s ease-in-out infinite;
+       margin-bottom: 0.5rem;
+     }
+
+     @keyframes processing {
+       0% { width: 0%; }
+       50% { width: 70%; }
+       100% { width: 100%; }
+     }
+
+     .processing-text {
+       color: var(--text-secondary);
+       font-size: 0.9rem;
+     }
+
+     .solution-preview {
+       display: flex;
+       flex-direction: column;
+       gap: 0.75rem;
+     }
+
+     .solution-item {
+       display: flex;
+       align-items: center;
+       gap: 0.75rem;
+       padding: 0.75rem;
+       background: var(--bg-secondary);
+       border-radius: 0.5rem;
+       border: 1px solid var(--border);
+     }
+
+     .severity {
+       width: 12px;
+       height: 12px;
+       border-radius: 50%;
+     }
+
+     .severity.high {
+       background: #ef4444;
+     }
+
+     .severity.medium {
+       background: #f59e0b;
+     }
+
+     .workflow-arrow {
+       text-align: center;
+       font-size: 2rem;
+       color: var(--brand-primary);
+       margin: 1rem 0;
+       animation: bounce 2s ease-in-out infinite;
+     }
+
+     @keyframes bounce {
+       0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+       40% { transform: translateY(-10px); }
+       60% { transform: translateY(-5px); }
+     }
+
+     .workflow-cta {
+       text-align: center;
+       margin-top: 3rem;
+     }
+
+     .workflow-btn {
+       background: var(--gradient-primary);
+       color: white;
+       border: none;
+       padding: 1.25rem 3rem;
+       border-radius: 3rem;
+       font-size: 1.1rem;
+       font-weight: 600;
+       cursor: pointer;
+       transition: all 0.3s ease;
+       display: inline-flex;
+       align-items: center;
+       gap: 0.75rem;
+       box-shadow: var(--shadow-lg);
+     }
+
+     .workflow-btn:hover {
+       transform: translateY(-3px);
+       box-shadow: var(--shadow-xl);
+     }
+
+     .btn-icon {
+       font-size: 1.2rem;
+       transition: transform 0.3s ease;
+     }
+
+     .workflow-btn:hover .btn-icon {
+       transform: translateX(5px);
+     }
+
+     /* Download Dropdown */
+     .download-dropdown {
+       position: relative;
+       display: inline-block;
+     }
+
+     .download-options {
+       position: absolute;
+       top: 100%;
+       left: 50%;
+       transform: translateX(-50%);
+       background: var(--bg-card);
+       border: 1px solid var(--border);
+       border-radius: 1rem;
+       box-shadow: var(--shadow-xl);
+       padding: 0.5rem;
+       min-width: 200px;
+       opacity: 0;
+       visibility: hidden;
+       transition: all 0.3s ease;
+       z-index: 1000;
+       margin-top: 0.5rem;
+     }
+
+     .download-dropdown:hover .download-options {
+       opacity: 1;
+       visibility: visible;
+     }
+
+     .download-option {
+       display: flex;
+       align-items: center;
+       gap: 0.75rem;
+       padding: 0.75rem 1rem;
+       border-radius: 0.75rem;
+       text-decoration: none;
+       color: var(--text-primary);
+       transition: all 0.2s ease;
+       font-weight: 500;
+     }
+
+     .download-option:hover {
+       background: var(--bg-secondary);
+       color: var(--brand-primary);
+       transform: translateX(4px);
+     }
+
+     .download-option svg {
+       flex-shrink: 0;
+     }
+
+     /* Mobile dropdown adjustments */
+     @media (max-width: 768px) {
+       .download-options {
+         left: 0;
+         right: 0;
+         transform: none;
+         min-width: auto;
+         margin: 0.5rem 1rem 0 1rem;
+       }
+       
+       .download-dropdown {
+         width: 100%;
+       }
+       
+       .download-dropdown .btn {
+         width: 100%;
+         justify-content: center;
+       }
+     }
+
+     /* Screenshots Slider */
+     .screenshots-section {
+       padding: 6rem 0;
+       background: var(--bg-secondary);
+     }
+
+     .screenshots-slider {
+       position: relative;
+       max-width: 800px;
+       margin: 0 auto;
+       overflow: hidden;
+       border-radius: 1rem;
+       box-shadow: var(--shadow-xl);
+     }
+
+     .slider-container {
+       position: relative;
+       width: 100%;
+       height: 600px;
+     }
+
+     .slide {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       opacity: 0;
+       transition: opacity 0.5s ease;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       background: var(--bg-card);
+     }
+
+     .slide.active {
+       opacity: 1;
+     }
+
+     .slide img {
+       max-width: 300px;
+       max-height: 500px;
+       width: auto;
+       height: auto;
+       border-radius: 1rem;
+       box-shadow: var(--shadow-lg);
+     }
+
+     .slide-info {
+       padding: 2rem;
+       max-width: 300px;
+     }
+
+     .slide-info h4 {
+       font-size: 1.5rem;
+       font-weight: 700;
+       margin-bottom: 1rem;
+       color: var(--text-primary);
+     }
+
+     .slide-info p {
+       color: var(--text-secondary);
+       line-height: 1.6;
+     }
+
+     .slider-controls {
+       position: absolute;
+       bottom: 1rem;
+       left: 50%;
+       transform: translateX(-50%);
+       display: flex;
+       align-items: center;
+       gap: 1rem;
+       background: rgba(0, 0, 0, 0.7);
+       padding: 0.5rem 1rem;
+       border-radius: 2rem;
+       backdrop-filter: blur(10px);
+     }
+
+     .prev-btn,
+     .next-btn {
+       background: none;
+       border: none;
+       color: white;
+       font-size: 1.5rem;
+       cursor: pointer;
+       padding: 0.5rem;
+       border-radius: 50%;
+       transition: all 0.3s ease;
+       width: 40px;
+       height: 40px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+     }
+
+     .prev-btn:hover,
+     .next-btn:hover {
+       background: rgba(255, 255, 255, 0.2);
+       transform: scale(1.1);
+     }
+
+     .slider-dots {
+       display: flex;
+       gap: 0.5rem;
+     }
+
+     .dot {
+       width: 12px;
+       height: 12px;
+       border-radius: 50%;
+       background: rgba(255, 255, 255, 0.5);
+       cursor: pointer;
+       transition: all 0.3s ease;
+     }
+
+     .dot.active {
+       background: white;
+       transform: scale(1.2);
+     }
+
+         /* Mobile Menu */
+     .mobile-menu {
+       display: none;
+       position: fixed;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       background: rgba(0, 0, 0, 0.8);
+       backdrop-filter: blur(10px);
+       z-index: 9999;
+       padding: 2rem;
+     }
+
+     .mobile-menu.active {
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+     }
+
+     .mobile-menu ul {
+       list-style: none;
+       padding: 0;
+       margin: 0;
+       text-align: center;
+     }
+
+     .mobile-menu li {
+       margin: 1.5rem 0;
+     }
+
+     .mobile-menu .nav-link {
+       font-size: 1.5rem;
+       color: white;
+       text-decoration: none;
+       font-weight: 600;
+     }
+
+     .mobile-menu-close {
+       position: absolute;
+       top: 2rem;
+       right: 2rem;
+       background: none;
+       border: none;
+       color: white;
+       font-size: 2rem;
+       cursor: pointer;
+     }
+
+     /* Responsive Design */
+     @media (max-width: 768px) {
+       .nav-menu {
+         display: none;
+       }
+
+       .mobile-menu-btn {
+         display: block;
+       }
+
+             .hero-content {
+         grid-template-columns: 1fr;
+         text-align: center;
+       }
+
+       .hero-actions {
+         justify-content: center;
+       }
+
+       .hero-slider {
+         max-width: 280px;
+         height: 605px; /* Fallback height for mobile */
+         aspect-ratio: 9 / 19.5; /* iPhone aspect ratio */
+         margin: 2rem auto;
+       }
+
+       .hero-slider-nav {
+         width: 40px;
+         height: 40px;
+         font-size: 1rem;
+       }
+
+       .hero-slider-nav.prev {
+         left: -15px;
+       }
+
+       .hero-slider-nav.next {
+         right: -15px;
+       }
+
+       .hero-slider-dots {
+         padding: 0.5rem 1rem;
+         gap: 0.5rem;
+       }
+
+       .hero-dot {
+         width: 8px;
+         height: 8px;
+       }
+
+             .features-grid,
+       .steps,
+       .reviews-grid,
+       .steps-modern,
+
+       .workflow-step {
+         flex-direction: column;
+         text-align: center;
+         gap: 1rem;
+       }
+
+       .step-visual {
+         min-width: auto;
+       }
+
+       .workflow-arrow {
+         font-size: 1.5rem;
+       }
+
+       .slider-container {
+         height: auto;
+         min-height: 400px;
+       }
+
+       .slide {
+         flex-direction: column;
+         padding: 1rem;
+       }
+
+       .slide img {
+         max-width: 250px;
+         max-height: 400px;
+       }
+
+       .slide-info {
+         padding: 1rem;
+         text-align: center;
+       }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+    }
+
+    /* Language Content */
+    [data-lang="en"] .tr-content {
+      display: none;
+    }
+
+    [data-lang="tr"] .en-content {
+      display: none;
+    }
+
+    /* Loading Animation */
+    .loading {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .loading.loaded {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
-<body>
+<body data-theme="light" data-lang="tr">
   <header>
-    <div class="container nav">
-      <div class="logo">
-        <img src="logo.png" alt="CarFix AI" />
+    <div class="container">
+      <div class="nav">
+                 <a href="#" class="logo">
+           <img src="carfixai-logo.png" alt="CarFix AI Logo" class="logo-img" />
         <span>CarFix AI</span>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#features">Özellikler</a></li>
-          <li><a href="#how">Nasıl Çalışır</a></li>
-          <li><a href="#reviews">Yorumlar</a></li>
-          <li><a href="#faq">SSS</a></li>
+         </a>
+        
+                 <nav class="nav-menu">
+           <ul>
+             <li><a href="#features" class="nav-link tr-content">Özellikler</a></li>
+             <li><a href="#features" class="nav-link en-content">Features</a></li>
+             <li><a href="#how-it-works" class="nav-link tr-content">Nasıl Çalışır</a></li>
+             <li><a href="#how-it-works" class="nav-link en-content">How It Works</a></li>
+             <li><a href="#reviews" class="nav-link tr-content">Yorumlar</a></li>
+             <li><a href="#reviews" class="nav-link en-content">Reviews</a></li>
         </ul>
       </nav>
-      <a class="cta" href="https://apps.apple.com/tr/app/carfix-ai/id6749153811?l=tr" rel="noopener">App Store’dan İndir</a>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+            <span class="tr-content">🌙</span>
+            <span class="en-content">🌙</span>
+          </button>
+          <button class="language-toggle" onclick="toggleLanguage()">
+            <span class="tr-content">EN</span>
+            <span class="en-content">TR</span>
+          </button>
+          <a href="https://apps.apple.com/tr/app/carfix-ai/id6749153811" class="btn btn-primary" target="_blank" rel="noopener">
+            <span class="tr-content">İndir</span>
+            <span class="en-content">Download</span>
+          </a>
+        </div>
+
+                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+       </div>
     </div>
   </header>
 
+   <!-- Mobile Menu -->
+   <div class="mobile-menu" id="mobileMenu">
+     <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
+     <ul>
+       <li><a href="#features" class="nav-link tr-content" onclick="toggleMobileMenu()">Özellikler</a></li>
+       <li><a href="#features" class="nav-link en-content" onclick="toggleMobileMenu()">Features</a></li>
+       <li><a href="#how-it-works" class="nav-link tr-content" onclick="toggleMobileMenu()">Nasıl Çalışır</a></li>
+       <li><a href="#how-it-works" class="nav-link en-content" onclick="toggleMobileMenu()">How It Works</a></li>
+       <li><a href="#reviews" class="nav-link tr-content" onclick="toggleMobileMenu()">Yorumlar</a></li>
+       <li><a href="#reviews" class="nav-link en-content" onclick="toggleMobileMenu()">Reviews</a></li>
+     </ul>
+   </div>
+
   <main>
-    <section class="container hero">
-      <div>
-        <span class="eyebrow">Yeni: CarFix AI 1.2</span>
-        <h1>Belirtileri Yaz, <br/>Arızayı Anında Anla.</h1>
-        <p class="lead">Motor ışığı, ses, sarsıntı veya performans düşüşü… CarFix AI, yazdığınız belirtilere göre olası nedenleri sıralar, risk seviyesini ve <strong>adım adım çözüm</strong> önerilerini sunar.</p>
-        <div class="badges">
-          <a class="badge" href="https://apps.apple.com/tr/app/carfix-ai/id6749153811?l=tr" rel="noopener">
-            <img src="apple.svg" alt="" /><span>App Store</span>
-          </a>
-          <a class="badge" href="#newsletter"><img src="mail.svg" alt="" /><span>Güncellemeleri Al</span></a>
-        </div>
-        <p class="muted" style="margin-top:8px;">Veri gizliliği odaklıdır — kişisel verilerinizi toplamaz. <a href="#privacy">Gizlilik</a></p>
-      </div>
-      <aside class="mock">
-        <!-- Telefon mockup’u: 1290x2796 ekran görüntüsü koyabilirsiniz -->
-        <img src="screenshot-hero.png" alt="CarFix AI uygulama ekran görüntüsü" />
-      </aside>
-    </section>
-
-    <section id="features">
+    <!-- Hero Section -->
+    <section class="hero">
       <div class="container">
-        <h2>Özellikler</h2>
-        <p class="sub">Zamandan kazandıran, güven veren ve aksiyona yönlendiren araçlar.</p>
-        <div class="grid-3">
-          <div class="card">
-            <h3>Yapay Zekâ Teşhisi</h3>
-            <p class="muted">Belirti metinlerinden model bazlı olası arıza listesi; olasılık/risk sıralaması.</p>
-          </div>
-          <div class="card">
-            <h3>Çözüm Adımları</h3>
-            <p class="muted">Evde deneyebileceğiniz basit kontrollerden, usta desteği gerektiren adımlara kadar rehberlik.</p>
-          </div>
-          <div class="card">
-            <h3>OBD2 Gerektirmez</h3>
-            <p class="muted">Sadece belirtileri girin; dilediğiniz zaman, dilediğiniz yerde kullanın.</p>
-          </div>
-          <div class="card">
-            <h3>Gizlilik Öncelikli</h3>
-            <p class="muted">Kişisel veri toplamaz; cihazınızda güvenle kullanın.</p>
-          </div>
-          <div class="card">
-            <h3>Hızlı & Hafif</h3>
-            <p class="muted">Küçük boyut, hızlı açılış, pürüzsüz arayüz.</p>
-          </div>
-          <div class="card">
-            <h3>Çoklu Senaryo</h3>
-            <p class="muted">Motor uyarıları, fren/süspansiyon sesleri, klima, yakıt tüketimi ve daha fazlası.</p>
-          </div>
+        <div class="hero-content">
+          <div class="hero-text">
+            <div class="hero-badge animate-pulse">
+              <span>🚀</span>
+              <span class="tr-content">Yeni: CarFix AI</span>
+              <span class="en-content">New: CarFix AI</span>
+            </div>
+            
+            <h1 class="hero-title">
+              <span class="tr-content">Belirtileri Yaz,<br/>Arızayı Anında Anla</span>
+              <span class="en-content">Describe Symptoms,<br/>Get Instant Diagnosis</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+              <span class="tr-content">Motor ışığı, ses, sarsıntı veya performans düşüşü… CarFix AI, yazdığınız belirtilere göre olası nedenleri sıralar, risk seviyesini ve adım adım çözüm önerilerini sunar.</span>
+              <span class="en-content">Engine light, noise, vibration or performance issues... CarFix AI analyzes your symptoms to provide possible causes, risk levels, and step-by-step solutions.</span>
+            </p>
+            
+                         <div class="hero-actions">
+               <a href="https://apps.apple.com/tr/app/carfix-ai/id6749153811" class="btn btn-primary animate-pulse" target="_blank" rel="noopener">
+                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                 </svg>
+                 <span class="tr-content">App Store'dan İndir</span>
+                 <span class="en-content">Download on App Store</span>
+               </a>
+               <a href="https://play.google.com/store/apps/details?id=com.carfixai.app" class="btn btn-primary animate-pulse" target="_blank" rel="noopener">
+                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                   <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                 </svg>
+                 <span class="tr-content">Google Play'den İndir</span>
+                 <span class="en-content">Download on Google Play</span>
+               </a>
+               <a href="#features" class="btn btn-secondary">
+                 <span class="tr-content">Daha Fazla Bilgi</span>
+                 <span class="en-content">Learn More</span>
+               </a>
         </div>
       </div>
-    </section>
-
-    <section id="how">
-      <div class="container">
-        <h2>Nasıl Çalışır?</h2>
-        <p class="sub">Üç basit adımda ön teşhis ve yönlendirme.</p>
-        <div class="steps">
-          <div class="step">
-            <h3>Belirtiyi Girin</h3>
-            <p class="muted">Örn. “Soğukta titreme ve rölantide dalgalanma”.</p>
+          
+                                           <div class="hero-image">
+             <div class="hero-slider">
+               <button class="hero-slider-nav prev" onclick="changeHeroSlide(-1)">‹</button>
+               <button class="hero-slider-nav next" onclick="changeHeroSlide(1)">›</button>
+               
+               <div class="hero-slide active">
+                 <img src="images/Simulator Screenshot - iPhone 16 Pro Max - 2025-08-02 at 00.30.05.png" alt="CarFix AI Ana Ekran" />
           </div>
-          <div class="step">
-            <h3>Olası Nedenleri Görün</h3>
-            <p class="muted">Sensör, ateşleme, yakıt-hava, mekanik aksam vb. adaylar.</p>
+               <div class="hero-slide">
+                 <img src="images/Simulator Screenshot - iPhone 16 Pro Max - 2025-08-02 at 00.30.16.png" alt="CarFix AI Belirti Girişi" />
           </div>
-          <div class="step">
-            <h3>Adım Adım Çözüm</h3>
-            <p class="muted">Basit kontrol → düşük risk çözümü → gerekirse uzman önerisi.</p>
+               <div class="hero-slide">
+                 <img src="images/Simulator Screenshot - iPhone 16 Pro Max - 2025-08-02 at 00.32.59.png" alt="CarFix AI AI Analiz" />
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="reviews">
-      <div class="container">
-        <h2>Kullanıcı Yorumları</h2>
-        <p class="sub">Gerçek sürücülerin deneyimleri.</p>
-        <div class="reviews">
-          <div class="card">
-            <div class="stars">★★★★★</div>
-            <blockquote>“Check engine yandı, CarFix AI ile aklımdaki iki sebebe indi ve ustada zaman kazandım.”</blockquote>
-            <p class="muted">— Efe Y.</p>
+               <div class="hero-slide">
+                 <img src="images/Simulator Screenshot - iPhone 16 Pro Max - 2025-08-02 at 00.33.00.png" alt="CarFix AI Teşhis Sonuçları" />
           </div>
-          <div class="card">
-            <div class="stars">★★★★★</div>
-            <blockquote>“Ses tarif ettim, muhtemel kayış gergisi dedi. Aynı gün çözdük.”</blockquote>
-            <p class="muted">— Elif K.</p>
+               <div class="hero-slide">
+                 <img src="images/Simulator Screenshot - iPhone 16 Pro Max - 2025-08-02 at 00.34.24.png" alt="CarFix AI Detaylı Analiz" />
           </div>
-          <div class="card">
-            <div class="stars">★★★★★</div>
-            <blockquote>“OBD2 yoktu, yine de yol gösterdi. Harika.”</blockquote>
-            <p class="muted">— Murat A.</p>
+               
+               <div class="hero-slider-dots">
+                 <span class="hero-dot active" onclick="showHeroSlide(0)"></span>
+                 <span class="hero-dot" onclick="showHeroSlide(1)"></span>
+                 <span class="hero-dot" onclick="showHeroSlide(2)"></span>
+                 <span class="hero-dot" onclick="showHeroSlide(3)"></span>
+                 <span class="hero-dot" onclick="showHeroSlide(4)"></span>
+               </div>
+             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="pricing">
+    <!-- Features Section -->
+    <section id="features" class="features">
       <div class="container">
-        <h2>Fiyatlandırma</h2>
-        <p class="sub">Ücretsiz indir, gelişmiş özellikler için yükselt.</p>
-        <div class="grid-3">
-          <div class="card">
-            <h3>Ücretsiz</h3>
-            <p class="muted">Sınırlı günlük teşhis, temel öneriler.</p>
+        <div class="section-header">
+          <h2 class="section-title">
+            <span class="tr-content">Güçlü AI Özellikleri</span>
+            <span class="en-content">Powerful AI Features</span>
+          </h2>
+          <p class="section-subtitle">
+            <span class="tr-content">Zamandan kazandıran, güven veren ve aksiyona yönlendiren araçlar</span>
+            <span class="en-content">Time-saving, reliable tools that guide you to action</span>
+          </p>
           </div>
-          <div class="card">
-            <h3>Haftalık</h3>
-            <p class="muted">Tüm özellikler — App içi ödeme.</p>
+        
+                 <div class="features-grid">
+           <div class="feature-card loading">
+             <div class="feature-icon">🤖</div>
+             <h3 class="feature-title">
+               <span class="tr-content">AI Destekli Teşhis</span>
+               <span class="en-content">AI-Powered Diagnosis</span>
+             </h3>
+             <p class="feature-description">
+               <span class="tr-content">Gelişmiş makine öğrenmesi algoritmaları ile belirtilerden anında arıza tespiti</span>
+               <span class="en-content">Advanced machine learning algorithms for instant fault detection from symptoms</span>
+             </p>
+             
           </div>
-          <div class="card">
-            <h3>Yıllık</h3>
-            <p class="muted">En avantajlı plan — sınırsız kullanım.</p>
+          
+          <div class="feature-card loading">
+            <div class="feature-icon">📚</div>
+            <h3 class="feature-title">
+              <span class="tr-content">Kapsamlı Veritabanı</span>
+              <span class="en-content">Comprehensive Database</span>
+            </h3>
+            <p class="feature-description">
+              <span class="tr-content">Binlerce araç modeli ve arıza senaryosu ile geniş bilgi tabanı</span>
+              <span class="en-content">Extensive knowledge base with thousands of vehicle models and fault scenarios</span>
+            </p>
+          </div>
+          
+          <div class="feature-card loading">
+            <div class="feature-icon">📸</div>
+            <h3 class="feature-title">
+              <span class="tr-content">Kolay Kullanım</span>
+              <span class="en-content">Easy to Use</span>
+            </h3>
+            <p class="feature-description">
+              <span class="tr-content">Sadece belirtileri yazın, anında sonuç alın. OBD2 cihazı gerekmez</span>
+              <span class="en-content">Just describe symptoms and get instant results. No OBD2 device required</span>
+            </p>
+          </div>
+          
+          <div class="feature-card loading">
+            <div class="feature-icon">🎯</div>
+            <h3 class="feature-title">
+              <span class="tr-content">Doğru Sonuçlar</span>
+              <span class="en-content">Accurate Results</span>
+            </h3>
+            <p class="feature-description">
+              <span class="tr-content">Detaylı arıza bilgileri, risk seviyeleri ve çözüm önerileri</span>
+              <span class="en-content">Detailed fault information, risk levels, and solution recommendations</span>
+            </p>
+          </div>
+          
+          <div class="feature-card loading">
+            <div class="feature-icon">🔒</div>
+            <h3 class="feature-title">
+              <span class="tr-content">Gizlilik Öncelikli</span>
+              <span class="en-content">Privacy First</span>
+            </h3>
+            <p class="feature-description">
+              <span class="tr-content">Verileriniz güvenle işlenir, hiçbir kişisel bilgi toplanmaz</span>
+              <span class="en-content">Your data is processed securely with no personal information collected</span>
+            </p>
+          </div>
+          
+          <div class="feature-card loading">
+            <div class="feature-icon">🚫</div>
+            <h3 class="feature-title">
+              <span class="tr-content">Reklamsız Deneyim</span>
+              <span class="en-content">Ad-Free Experience</span>
+            </h3>
+            <p class="feature-description">
+              <span class="tr-content">Premium versiyonda kesintisiz araç keşfi, reklam yok</span>
+              <span class="en-content">Uninterrupted car exploration without advertisements in premium version</span>
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="faq">
+              <!-- How It Works -->
+     <section id="how-it-works" class="how-it-works">
       <div class="container">
-        <h2>Sık Sorulan Sorular</h2>
-        <details>
-          <summary>OBD2 cihazı gerekli mi?</summary>
-          <p class="muted">Hayır. CarFix AI belirtiden tahmin ve yönlendirme yapar. OBD2 entegrasyonu daha isabetli olabilir, gelecekte planlanmaktadır.</p>
-        </details>
-        <details>
-          <summary>Verilerim toplanıyor mu?</summary>
-          <p class="muted">Kişisel veri toplamıyoruz. Ayrıntılar için aşağıdaki gizlilik bağlantısına bakın.</p>
-        </details>
-        <details>
-          <summary>Profesyonel teşhis yerine geçer mi?</summary>
-          <p class="muted">Hayır. CarFix AI, ön bilgilendirme ve yönlendirme sağlar; nihai teşhis yetkili teknisyenindir.</p>
-        </details>
+         <div class="section-header">
+           <h2 class="section-title">
+             <span class="tr-content">Nasıl Çalışır?</span>
+             <span class="en-content">How It Works</span>
+           </h2>
+           <p class="section-subtitle">
+             <span class="tr-content">Sadece 3 basit adımda araç arızanızı teşhis edin</span>
+             <span class="en-content">Diagnose your car problem in just 3 simple steps</span>
+           </p>
+          </div>
+
+         <div class="workflow-container">
+           <div class="workflow-step loading">
+             <div class="step-visual">
+               <div class="step-circle">1</div>
+               <div class="step-icon-large">📝</div>
+          </div>
+             <div class="step-content">
+               <h3>
+                 <span class="tr-content">Belirtileri Açıklayın</span>
+                 <span class="en-content">Describe Symptoms</span>
+               </h3>
+               <p>
+                 <span class="tr-content">Aracınızda gözlemlediğiniz problemleri detaylı bir şekilde yazın. Motor sesi, titreşim, ışık uyarıları...</span>
+                 <span class="en-content">Describe the problems you observe in your vehicle in detail. Engine sounds, vibrations, warning lights...</span>
+               </p>
+               <div class="step-example">
+                 <span class="tr-content">"Soğuk havada motor titriyor ve rölantide dalgalanma var"</span>
+                 <span class="en-content">"Engine vibrates in cold weather and there's fluctuation at idle"</span>
+          </div>
+        </div>
+      </div>
+
+           <div class="workflow-arrow">↓</div>
+
+           <div class="workflow-step loading">
+             <div class="step-visual">
+               <div class="step-circle">2</div>
+               <div class="step-icon-large">🤖</div>
+          </div>
+             <div class="step-content">
+               <h3>
+                 <span class="tr-content">AI Analiz Yapar</span>
+                 <span class="en-content">AI Analyzes</span>
+               </h3>
+               <p>
+                 <span class="tr-content">Gelişmiş yapay zeka algoritmaları, binlerce arıza senaryosunu analiz ederek en olası nedenleri belirler.</span>
+                 <span class="en-content">Advanced AI algorithms analyze thousands of fault scenarios to determine the most likely causes.</span>
+               </p>
+               <div class="ai-processing">
+                 <div class="processing-bar"></div>
+                 <span class="processing-text">
+                   <span class="tr-content">Analiz ediliyor...</span>
+                   <span class="en-content">Analyzing...</span>
+                 </span>
+          </div>
+          </div>
+           </div>
+
+           <div class="workflow-arrow">↓</div>
+
+           <div class="workflow-step loading">
+             <div class="step-visual">
+               <div class="step-circle">3</div>
+               <div class="step-icon-large">🔧</div>
+             </div>
+             <div class="step-content">
+               <h3>
+                 <span class="tr-content">Çözüm Önerileri Alın</span>
+                 <span class="en-content">Get Solution Recommendations</span>
+               </h3>
+               <p>
+                 <span class="tr-content">Olası nedenler, risk seviyeleri ve adım adım çözüm önerileri ile aracınızı tamir edin.</span>
+                 <span class="en-content">Fix your vehicle with possible causes, risk levels, and step-by-step solution recommendations.</span>
+               </p>
+               <div class="solution-preview">
+                 <div class="solution-item">
+                   <span class="severity high"></span>
+                   <span class="tr-content">Motor sensörü arızası</span>
+                   <span class="en-content">Engine sensor failure</span>
+                 </div>
+                 <div class="solution-item">
+                   <span class="severity medium"></span>
+                   <span class="tr-content">Yakıt filtresi tıkanıklığı</span>
+                   <span class="en-content">Fuel filter blockage</span>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+
+         <div class="workflow-cta">
+           <div class="download-dropdown">
+             <button class="workflow-btn dropdown-toggle">
+               <span class="tr-content">Şimdi Dene</span>
+               <span class="en-content">Try Now</span>
+               <span class="btn-icon">▼</span>
+             </button>
+             <div class="download-options">
+               <a href="https://apps.apple.com/tr/app/carfix-ai/id6749153811" class="download-option" target="_blank" rel="noopener">
+                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                 </svg>
+                 <span class="tr-content">App Store</span>
+                 <span class="en-content">App Store</span>
+               </a>
+               <a href="https://play.google.com/store/apps/details?id=com.carfixai.app" class="download-option" target="_blank" rel="noopener">
+                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                   <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                 </svg>
+                 <span class="tr-content">Google Play</span>
+                 <span class="en-content">Google Play</span>
+               </a>
+             </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="newsletter">
+    <!-- Reviews -->
+    <section id="reviews" class="reviews">
       <div class="container">
-        <h2>Güncellemeleri Kaçırmayın</h2>
-        <p class="sub">Yeni özellikler ve kampanyalar e-postanıza gelsin.</p>
-        <form class="card" onsubmit="return subscribe(event)">
-          <label for="email" class="muted">E-posta</label>
-          <input id="email" type="email" required placeholder="ornek@eposta.com" style="width:100%;margin:8px 0 12px;padding:12px;border-radius:10px;border:1px solid var(--stroke);background:#0b0f13;color:var(--text)">
-          <button class="cta" type="submit">Kaydol</button>
-          <p id="sub-msg" class="muted" style="margin-top:8px;"></p>
-        </form>
+        <div class="section-header">
+          <h2 class="section-title">
+            <span class="tr-content">Kullanıcı Yorumları</span>
+            <span class="en-content">User Reviews</span>
+          </h2>
+          <p class="section-subtitle">
+            <span class="tr-content">Gerçek sürücülerin deneyimleri</span>
+            <span class="en-content">Real drivers' experiences</span>
+          </p>
+          </div>
+        
+        <div class="reviews-grid">
+          <div class="review-card loading">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              <span class="tr-content">"Check engine yandı, CarFix AI ile aklımdaki iki sebebe indi ve ustada zaman kazandım."</span>
+              <span class="en-content">"Check engine light came on, CarFix AI narrowed it down to two possible causes and saved me time at the mechanic."</span>
+            </p>
+            <p class="review-author">— Efe Y.</p>
+          </div>
+          
+          <div class="review-card loading">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              <span class="tr-content">"Ses tarif ettim, muhtemel kayış gergisi dedi. Aynı gün çözdük."</span>
+              <span class="en-content">"I described the noise, it suggested a possible belt tensioner. We fixed it the same day."</span>
+            </p>
+            <p class="review-author">— Elif K.</p>
+          </div>
+          
+          <div class="review-card loading">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              <span class="tr-content">"OBD2 yoktu, yine de yol gösterdi. Harika."</span>
+              <span class="en-content">"No OBD2 device needed, still guided me perfectly. Amazing."</span>
+            </p>
+            <p class="review-author">— Murat A.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+     <!-- CTA Section -->
+     <section class="cta-section">
+      <div class="container">
+         <h2 class="cta-title">
+           <span class="tr-content">Bugün Araç Arıza Teşhisini Keşfedin</span>
+           <span class="en-content">Start Diagnosing Car Issues Today</span>
+         </h2>
+         <p class="cta-subtitle">
+           <span class="tr-content">Binlerce sürücü CarFix AI'ya güveniyor</span>
+           <span class="en-content">Thousands of drivers trust CarFix AI</span>
+         </p>
+         <div class="cta-buttons">
+           <a href="https://apps.apple.com/tr/app/carfix-ai/id6749153811" class="btn btn-white" target="_blank" rel="noopener">
+             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+               <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+             </svg>
+             <span class="tr-content">App Store'dan İndir</span>
+             <span class="en-content">Download on App Store</span>
+           </a>
+           <a href="https://play.google.com/store/apps/details?id=com.carfixai.app" class="btn btn-white" target="_blank" rel="noopener">
+             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+               <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+             </svg>
+             <span class="tr-content">Google Play'den İndir</span>
+             <span class="en-content">Download on Google Play</span>
+           </a>
+           <a href="#features" class="btn btn-secondary">
+             <span class="tr-content">Daha Fazla Bilgi</span>
+             <span class="en-content">Learn More</span>
+           </a>
+         </div>
       </div>
     </section>
   </main>
 
-  <footer id="privacy">
+  <footer>
     <div class="container">
-      <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-        <small>© <span id="y"></span> CarFix AI</small>
-        <div style="display:flex;gap:14px;">
-          <a href="/privacy.html">Gizlilik</a>
-          <a href="/terms.html">Kullanım Koşulları</a>
-          <a href="mailto:hello@carfixai.app">İletişim</a>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>CarFix AI</h3>
+          <p>
+            <span class="tr-content">Yapay zeka destekli araç arıza teşhis uygulaması</span>
+            <span class="en-content">AI-powered car fault diagnosis app</span>
+          </p>
+        </div>
+        
+        <div class="footer-section">
+          <h3>
+            <span class="tr-content">Bağlantılar</span>
+            <span class="en-content">Links</span>
+          </h3>
+          <p><a href="#features">
+            <span class="tr-content">Özellikler</span>
+            <span class="en-content">Features</span>
+          </a></p>
+          <p><a href="#how-it-works">
+            <span class="tr-content">Nasıl Çalışır</span>
+            <span class="en-content">How It Works</span>
+          </a></p>
+          <p><a href="#reviews">
+            <span class="tr-content">Yorumlar</span>
+            <span class="en-content">Reviews</span>
+          </a></p>
+      </div>
+        
+        <div class="footer-section">
+          <h3>
+            <span class="tr-content">Destek</span>
+            <span class="en-content">Support</span>
+          </h3>
+          <p><a href="mailto:hello@carfixai.app">
+            <span class="tr-content">İletişim</span>
+            <span class="en-content">Contact</span>
+          </a></p>
+          <p><a href="/privacy.html">
+            <span class="tr-content">Gizlilik</span>
+            <span class="en-content">Privacy</span>
+          </a></p>
+          <p><a href="/terms.html">
+            <span class="tr-content">Kullanım Koşulları</span>
+            <span class="en-content">Terms of Use</span>
+          </a></p>
         </div>
       </div>
-      <p class="muted" style="margin-top:10px;">CarFix AI, öneri ve ön bilgi sağlar; profesyonel teşhis/servis yerine geçmez.</p>
+      
+      <div class="footer-bottom">
+        <p>© <span id="current-year"></span> CarFix AI. 
+          <span class="tr-content">Tüm hakları saklıdır.</span>
+          <span class="en-content">All rights reserved.</span>
+        </p>
+      </div>
     </div>
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-    function subscribe(e){
-      e.preventDefault();
-      const el = document.getElementById('email');
-      const msg = document.getElementById('sub-msg');
-      // Basit demo: gerçek ortamda burada bir form endpoint'ine POST edin.
-      msg.textContent = "Teşekkürler! Kaydınız alındı.";
-      el.value = "";
-      return false;
+    // Theme Toggle
+    function toggleTheme() {
+      const body = document.body;
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      // Update theme toggle button
+      const themeToggle = document.querySelector('.theme-toggle');
+      themeToggle.innerHTML = newTheme === 'light' ? '🌙' : '☀️';
     }
+
+    // Language Toggle
+    function toggleLanguage() {
+      const body = document.body;
+      const currentLang = body.getAttribute('data-lang');
+      const newLang = currentLang === 'tr' ? 'en' : 'tr';
+      
+      body.setAttribute('data-lang', newLang);
+      localStorage.setItem('language', newLang);
+      
+      // Update language toggle button
+      const langToggle = document.querySelector('.language-toggle');
+      langToggle.innerHTML = newLang === 'tr' ? 'EN' : 'TR';
+      
+      // Update page title and meta description
+      const title = document.querySelector('title');
+      const metaDesc = document.querySelector('meta[name="description"]');
+      
+      if (title) {
+        title.textContent = newLang === 'tr' ? title.getAttribute('data-tr') : title.getAttribute('data-en');
+      }
+      
+      if (metaDesc) {
+        metaDesc.setAttribute('content', newLang === 'tr' ? metaDesc.getAttribute('data-tr') : metaDesc.getAttribute('data-en'));
+      }
+    }
+
+         // Mobile Menu Toggle
+     function toggleMobileMenu() {
+       const mobileMenu = document.getElementById('mobileMenu');
+       mobileMenu.classList.toggle('active');
+     }
+
+     // Slider functionality
+     let currentSlideIndex = 0;
+     const slides = document.querySelectorAll('.slide');
+     const dots = document.querySelectorAll('.dot');
+
+     function showSlide(index) {
+       // Hide all slides
+       slides.forEach(slide => slide.classList.remove('active'));
+       dots.forEach(dot => dot.classList.remove('active'));
+       
+       // Show current slide
+       if (slides[index]) {
+         slides[index].classList.add('active');
+         dots[index].classList.add('active');
+       }
+       
+       currentSlideIndex = index;
+     }
+
+     function changeSlide(direction) {
+       let newIndex = currentSlideIndex + direction;
+       
+       if (newIndex >= slides.length) {
+         newIndex = 0;
+       } else if (newIndex < 0) {
+         newIndex = slides.length - 1;
+       }
+       
+       showSlide(newIndex);
+     }
+
+     function currentSlide(index) {
+       showSlide(index - 1);
+     }
+
+     // Auto-play slider
+     function startSlideshow() {
+       setInterval(() => {
+         changeSlide(1);
+       }, 5000);
+     }
+
+     // Hero Slider functionality
+     let currentHeroSlide = 0;
+     const heroSlides = document.querySelectorAll('.hero-slide');
+     const heroDots = document.querySelectorAll('.hero-dot');
+
+     function showHeroSlide(index) {
+       heroSlides.forEach(slide => slide.classList.remove('active'));
+       heroDots.forEach(dot => dot.classList.remove('active'));
+       
+       if (heroSlides[index]) {
+         heroSlides[index].classList.add('active');
+         heroDots[index].classList.add('active');
+       }
+       
+       currentHeroSlide = index;
+     }
+
+     function changeHeroSlide(direction) {
+       let newIndex = currentHeroSlide + direction;
+       
+       if (newIndex >= heroSlides.length) {
+         newIndex = 0;
+       } else if (newIndex < 0) {
+         newIndex = heroSlides.length - 1;
+       }
+       
+       showHeroSlide(newIndex);
+     }
+
+     function startHeroSlideshow() {
+       setInterval(() => {
+         let nextSlide = (currentHeroSlide + 1) % heroSlides.length;
+         showHeroSlide(nextSlide);
+       }, 4000);
+     }
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('loaded');
+        }
+      });
+    }, observerOptions);
+
+         // Observe all loading elements
+     document.addEventListener('DOMContentLoaded', () => {
+       const loadingElements = document.querySelectorAll('.loading');
+       loadingElements.forEach(el => observer.observe(el));
+       
+       // Set current year
+       document.getElementById('current-year').textContent = new Date().getFullYear();
+       
+       // Load saved preferences
+       const savedTheme = localStorage.getItem('theme') || 'light';
+       const savedLang = localStorage.getItem('language') || 'tr';
+       
+       document.body.setAttribute('data-theme', savedTheme);
+       document.body.setAttribute('data-lang', savedLang);
+       
+       // Update toggle buttons
+       const themeToggle = document.querySelector('.theme-toggle');
+       const langToggle = document.querySelector('.language-toggle');
+       
+       themeToggle.innerHTML = savedTheme === 'light' ? '🌙' : '☀️';
+       langToggle.innerHTML = savedLang === 'tr' ? 'EN' : 'TR';
+       
+       // Initialize slider
+       const slides = document.querySelectorAll('.slide');
+       const dots = document.querySelectorAll('.dot');
+       if (slides.length > 0) {
+         showSlide(0);
+         startSlideshow();
+       }
+
+       // Initialize hero slider
+       const heroSlides = document.querySelectorAll('.hero-slide');
+       const heroDots = document.querySelectorAll('.hero-dot');
+       if (heroSlides.length > 0) {
+         showHeroSlide(0);
+         startHeroSlideshow();
+         
+         // Add touch/swipe support
+         const heroSlider = document.querySelector('.hero-slider');
+         let startX = 0;
+         let startY = 0;
+         
+         heroSlider.addEventListener('touchstart', (e) => {
+           startX = e.touches[0].clientX;
+           startY = e.touches[0].clientY;
+         });
+         
+         heroSlider.addEventListener('touchend', (e) => {
+           const endX = e.changedTouches[0].clientX;
+           const endY = e.changedTouches[0].clientY;
+           const diffX = startX - endX;
+           const diffY = startY - endY;
+           
+           // Check if horizontal swipe is more significant than vertical
+           if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+             if (diffX > 0) {
+               // Swipe left - next slide
+               changeHeroSlide(1);
+             } else {
+               // Swipe right - previous slide
+               changeHeroSlide(-1);
+             }
+           }
+         });
+       }
+     });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.98)';
+        if (document.body.getAttribute('data-theme') === 'dark') {
+          header.style.background = 'rgba(15, 23, 42, 0.98)';
+        }
+      } else {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+        if (document.body.getAttribute('data-theme') === 'dark') {
+          header.style.background = 'rgba(15, 23, 42, 0.95)';
+        }
+      }
+    });
   </script>
 </body>
 </html>
