@@ -383,8 +383,10 @@
       transition: all 0.3s ease;
     }
 
+    /* Dark mode header improvements */
     [data-theme="dark"] header {
       background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid rgba(71, 85, 105, 0.3);
     }
 
     .nav {
@@ -402,6 +404,15 @@
       font-size: 1.5rem;
       color: var(--text-primary);
       text-decoration: none;
+    }
+
+    /* Dark mode logo improvements */
+    [data-theme="dark"] .logo {
+      color: #f8fafc;
+    }
+
+    [data-theme="dark"] .logo:hover {
+      color: #60a5fa;
     }
 
          .logo-icon {
@@ -452,6 +463,25 @@
     .nav-link:hover {
       color: var(--brand-primary);
       transform: translateY(-1px);
+    }
+
+    /* Dark mode navigation improvements */
+    [data-theme="dark"] .nav-link {
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+
+    [data-theme="dark"] .nav-link:hover {
+      color: #60a5fa;
+      text-shadow: 0 0 8px rgba(96, 165, 250, 0.3);
+    }
+
+    [data-theme="dark"] .theme-toggle {
+      color: #e2e8f0;
+    }
+
+    [data-theme="dark"] .language-toggle {
+      color: #e2e8f0;
     }
 
     .nav-link::after {
@@ -1454,6 +1484,16 @@
        color: white;
        text-decoration: none;
        font-weight: 600;
+     }
+
+     /* Dark mode mobile menu improvements */
+     [data-theme="dark"] .mobile-menu .nav-link {
+       color: #f8fafc;
+     }
+
+     [data-theme="dark"] .mobile-menu .nav-link:hover {
+       color: #60a5fa;
+       text-shadow: 0 0 8px rgba(96, 165, 250, 0.3);
      }
 
      .mobile-menu-close {
