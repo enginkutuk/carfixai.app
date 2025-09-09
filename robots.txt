@@ -41,6 +41,13 @@ Allow: /*.webp
 
 # Allow access to images directory
 Allow: /images/
+Allow: /blog/images/
+
+# Allow access to blog pages
+Allow: /blog/
+Allow: /blog/motor-isigi-yaniyor-ne-yapmalisiniz.html
+Allow: /blog/arac-sarsintisi-nedenleri-ve-cozumleri.html
+Allow: /blog/fren-sistemi-arizalari-ve-bakimi.html
 
 # Allow access to logo
 Allow: /carfixai-logo.png

@@ -8,7 +8,7 @@
   <meta name="keywords" content="araç arıza teşhisi, car diagnostic app, yapay zeka araç, AI car repair, motor arızası, engine light, check engine, araç sorunları, car problems, otomobil bakım, car maintenance, araç teşhisi, car diagnosis, ücretsiz araç uygulaması, free car app, carfix ai, araç arıza uygulaması, car fault detection app, motor sesi, engine noise, araç sarsıntısı, car vibration, otomobil arıza, vehicle fault, car repair app, araç bakım uygulaması" />
   <meta name="author" content="CarFix AI" />
   <meta name="robots" content="index, follow" />
-  <meta name="language" content="Turkish, English" />
+  <meta name="language" content="Turkish, English, Dutch, Danish, German, Italian" />
   <meta name="revisit-after" content="7 days" />
   <meta name="distribution" content="global" />
   <meta name="rating" content="general" />
@@ -437,8 +437,14 @@
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 2.5rem;
+      gap: 0.75rem;
       list-style: none;
+    }
+    
+    .nav-link {
+      font-size: 0.8rem;
+      white-space: nowrap;
+      padding: 0.25rem 0.5rem;
     }
 
     .nav-menu ul {
@@ -539,6 +545,57 @@
       color: var(--brand-primary);
       transform: translateY(-1px);
       box-shadow: var(--shadow);
+    }
+
+    .language-selector {
+      position: relative;
+      display: inline-block;
+    }
+
+    .language-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      box-shadow: var(--shadow-lg);
+      z-index: 1000;
+      min-width: 150px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .language-selector:hover .language-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .lang-option {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: none;
+      background: transparent;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      text-align: left;
+      font-size: 0.875rem;
+    }
+
+    .lang-option:hover {
+      background: var(--bg-secondary);
+    }
+
+    .lang-option:first-child {
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    .lang-option:last-child {
+      border-radius: 0 0 0.5rem 0.5rem;
     }
 
     .mobile-menu-btn {
@@ -839,6 +896,114 @@
     .step-description {
       color: var(--text-secondary);
       line-height: 1.6;
+    }
+
+    /* Blog Section */
+    .blog {
+      padding: 6rem 0;
+      background: var(--bg-secondary);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .blog-card {
+      background: var(--bg-card);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .blog-image {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .blog-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .blog-card:hover .blog-image img {
+      transform: scale(1.05);
+    }
+
+    .blog-category {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .blog-content {
+      padding: 1.5rem;
+    }
+
+    .blog-content h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .blog-content p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+      color: var(--text-tertiary);
+    }
+
+    .blog-date {
+      font-weight: 500;
+    }
+
+    .blog-read-time {
+      background: var(--bg-secondary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.75rem;
+    }
+
+    .blog-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--brand-primary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .blog-link:hover {
+      color: var(--brand-secondary);
+      transform: translateX(4px);
     }
 
     /* Reviews */
@@ -1571,6 +1736,28 @@
        cursor: pointer;
      }
 
+     /* Tablet adjustments */
+     @media (max-width: 1024px) {
+       .nav-menu {
+         gap: 1rem;
+       }
+       
+       .nav-link {
+         font-size: 0.85rem;
+       }
+     }
+
+     /* Small desktop/large tablet */
+     @media (max-width: 1200px) {
+       .nav-menu {
+         gap: 1.2rem;
+       }
+       
+       .nav-link {
+         font-size: 0.9rem;
+       }
+     }
+
      /* Responsive Design */
      @media (max-width: 768px) {
        .nav-menu {
@@ -1623,6 +1810,7 @@
 
              .features-grid,
        .steps,
+       .blog-grid,
        .reviews-grid,
        .steps-modern,
 
@@ -1846,11 +2034,51 @@
     }
 
     /* Language Content */
-    [data-lang="en"] .tr-content {
+    [data-lang="en"] .tr-content,
+    [data-lang="en"] .nl-content,
+    [data-lang="en"] .da-content,
+    [data-lang="en"] .de-content,
+    [data-lang="en"] .it-content {
       display: none;
     }
-
-    [data-lang="tr"] .en-content {
+    
+    [data-lang="tr"] .en-content,
+    [data-lang="tr"] .nl-content,
+    [data-lang="tr"] .da-content,
+    [data-lang="tr"] .de-content,
+    [data-lang="tr"] .it-content {
+      display: none;
+    }
+    
+    [data-lang="nl"] .tr-content,
+    [data-lang="nl"] .en-content,
+    [data-lang="nl"] .da-content,
+    [data-lang="nl"] .de-content,
+    [data-lang="nl"] .it-content {
+      display: none;
+    }
+    
+    [data-lang="da"] .tr-content,
+    [data-lang="da"] .en-content,
+    [data-lang="da"] .nl-content,
+    [data-lang="da"] .de-content,
+    [data-lang="da"] .it-content {
+      display: none;
+    }
+    
+    [data-lang="de"] .tr-content,
+    [data-lang="de"] .en-content,
+    [data-lang="de"] .nl-content,
+    [data-lang="de"] .da-content,
+    [data-lang="de"] .it-content {
+      display: none;
+    }
+    
+    [data-lang="it"] .tr-content,
+    [data-lang="it"] .en-content,
+    [data-lang="it"] .nl-content,
+    [data-lang="it"] .da-content,
+    [data-lang="it"] .de-content {
       display: none;
     }
 
@@ -1880,10 +2108,22 @@
            <ul>
              <li><a href="#features" class="nav-link tr-content">Özellikler</a></li>
              <li><a href="#features" class="nav-link en-content">Features</a></li>
+             <li><a href="#features" class="nav-link nl-content">Functies</a></li>
+             <li><a href="#features" class="nav-link da-content">Funktioner</a></li>
+             <li><a href="#features" class="nav-link de-content">Funktionen</a></li>
+             <li><a href="#features" class="nav-link it-content">Caratteristiche</a></li>
              <li><a href="#how-it-works" class="nav-link tr-content">Nasıl Çalışır</a></li>
              <li><a href="#how-it-works" class="nav-link en-content">How It Works</a></li>
-             <li><a href="#reviews" class="nav-link tr-content">Yorumlar</a></li>
-             <li><a href="#reviews" class="nav-link en-content">Reviews</a></li>
+             <li><a href="#how-it-works" class="nav-link nl-content">Hoe Het Werkt</a></li>
+             <li><a href="#how-it-works" class="nav-link da-content">Sådan Fungerer Det</a></li>
+             <li><a href="#how-it-works" class="nav-link de-content">Wie Es Funktioniert</a></li>
+             <li><a href="#how-it-works" class="nav-link it-content">Come Funziona</a></li>
+             <li><a href="#blog" class="nav-link tr-content">Blog</a></li>
+             <li><a href="#blog" class="nav-link en-content">Blog</a></li>
+             <li><a href="#blog" class="nav-link nl-content">Blog</a></li>
+             <li><a href="#blog" class="nav-link da-content">Blog</a></li>
+             <li><a href="#blog" class="nav-link de-content">Blog</a></li>
+             <li><a href="#blog" class="nav-link it-content">Blog</a></li>
         </ul>
       </nav>
 
@@ -1892,13 +2132,43 @@
             <span class="tr-content">🌙</span>
             <span class="en-content">🌙</span>
           </button>
-          <button class="language-toggle" onclick="toggleLanguage()">
-            <span class="tr-content">EN</span>
-            <span class="en-content">TR</span>
-          </button>
+          <div class="language-selector">
+            <button class="language-toggle" onclick="toggleLanguage()">
+              <span class="tr-content">EN</span>
+              <span class="en-content">TR</span>
+              <span class="nl-content">EN</span>
+              <span class="da-content">EN</span>
+              <span class="de-content">EN</span>
+              <span class="it-content">EN</span>
+            </button>
+            <div class="language-dropdown">
+              <button onclick="setLanguage('tr')" class="lang-option">
+                <span>🇹🇷 Türkçe</span>
+              </button>
+              <button onclick="setLanguage('en')" class="lang-option">
+                <span>🇺🇸 English</span>
+              </button>
+              <button onclick="setLanguage('nl')" class="lang-option">
+                <span>🇳🇱 Nederlands</span>
+              </button>
+              <button onclick="setLanguage('da')" class="lang-option">
+                <span>🇩🇰 Dansk</span>
+              </button>
+              <button onclick="setLanguage('de')" class="lang-option">
+                <span>🇩🇪 Deutsch</span>
+              </button>
+              <button onclick="setLanguage('it')" class="lang-option">
+                <span>🇮🇹 Italiano</span>
+              </button>
+            </div>
+          </div>
           <a href="https://apps.apple.com/tr/app/carfix-ai/id6749153811" class="btn btn-primary" target="_blank" rel="noopener">
             <span class="tr-content">İndir</span>
             <span class="en-content">Download</span>
+            <span class="nl-content">Downloaden</span>
+            <span class="da-content">Download</span>
+            <span class="de-content">Herunterladen</span>
+            <span class="it-content">Scarica</span>
           </a>
         </div>
 
@@ -1913,10 +2183,28 @@
      <ul>
        <li><a href="#features" class="nav-link tr-content" onclick="toggleMobileMenu()">Özellikler</a></li>
        <li><a href="#features" class="nav-link en-content" onclick="toggleMobileMenu()">Features</a></li>
+       <li><a href="#features" class="nav-link nl-content" onclick="toggleMobileMenu()">Functies</a></li>
+       <li><a href="#features" class="nav-link da-content" onclick="toggleMobileMenu()">Funktioner</a></li>
+       <li><a href="#features" class="nav-link de-content" onclick="toggleMobileMenu()">Funktionen</a></li>
+       <li><a href="#features" class="nav-link it-content" onclick="toggleMobileMenu()">Caratteristiche</a></li>
        <li><a href="#how-it-works" class="nav-link tr-content" onclick="toggleMobileMenu()">Nasıl Çalışır</a></li>
        <li><a href="#how-it-works" class="nav-link en-content" onclick="toggleMobileMenu()">How It Works</a></li>
+       <li><a href="#how-it-works" class="nav-link nl-content" onclick="toggleMobileMenu()">Hoe Het Werkt</a></li>
+       <li><a href="#how-it-works" class="nav-link da-content" onclick="toggleMobileMenu()">Sådan Fungerer Det</a></li>
+       <li><a href="#how-it-works" class="nav-link de-content" onclick="toggleMobileMenu()">Wie Es Funktioniert</a></li>
+       <li><a href="#how-it-works" class="nav-link it-content" onclick="toggleMobileMenu()">Come Funziona</a></li>
+       <li><a href="#blog" class="nav-link tr-content" onclick="toggleMobileMenu()">Blog</a></li>
+       <li><a href="#blog" class="nav-link en-content" onclick="toggleMobileMenu()">Blog</a></li>
+       <li><a href="#blog" class="nav-link nl-content" onclick="toggleMobileMenu()">Blog</a></li>
+       <li><a href="#blog" class="nav-link da-content" onclick="toggleMobileMenu()">Blog</a></li>
+       <li><a href="#blog" class="nav-link de-content" onclick="toggleMobileMenu()">Blog</a></li>
+       <li><a href="#blog" class="nav-link it-content" onclick="toggleMobileMenu()">Blog</a></li>
        <li><a href="#reviews" class="nav-link tr-content" onclick="toggleMobileMenu()">Yorumlar</a></li>
        <li><a href="#reviews" class="nav-link en-content" onclick="toggleMobileMenu()">Reviews</a></li>
+       <li><a href="#reviews" class="nav-link nl-content" onclick="toggleMobileMenu()">Beoordelingen</a></li>
+       <li><a href="#reviews" class="nav-link da-content" onclick="toggleMobileMenu()">Anmeldelser</a></li>
+       <li><a href="#reviews" class="nav-link de-content" onclick="toggleMobileMenu()">Bewertungen</a></li>
+       <li><a href="#reviews" class="nav-link it-content" onclick="toggleMobileMenu()">Recensioni</a></li>
      </ul>
    </div>
 
@@ -1930,16 +2218,28 @@
               <span>🚀</span>
               <span class="tr-content">Yeni: CarFix AI</span>
               <span class="en-content">New: CarFix AI</span>
+              <span class="nl-content">Nieuw: CarFix AI</span>
+              <span class="da-content">Ny: CarFix AI</span>
+              <span class="de-content">Neu: CarFix AI</span>
+              <span class="it-content">Nuovo: CarFix AI</span>
             </div>
             
             <h1 class="hero-title">
               <span class="tr-content">🚗 Araç Arızası mı?<br/>Yapay Zeka ile Anında Çöz! ⚡</span>
               <span class="en-content">🚗 Car Problem?<br/>Solve Instantly with AI! ⚡</span>
+              <span class="nl-content">🚗 Auto Probleem?<br/>Los Direct Op Met AI! ⚡</span>
+              <span class="da-content">🚗 Bil Problem?<br/>Løs Øjeblikkeligt Med AI! ⚡</span>
+              <span class="de-content">🚗 Auto Problem?<br/>Löse Sofort Mit KI! ⚡</span>
+              <span class="it-content">🚗 Problema Auto?<br/>Risolvi Istantaneamente Con AI! ⚡</span>
             </h1>
             
             <p class="hero-subtitle">
               <span class="tr-content">Motor ışığı yanıyor? Ses geliyor? Sarsıntı var? CarFix AI ile belirtileri yaz, yapay zeka anında teşhis etsin! 💡 Ücretsiz indir, hemen kullan!</span>
               <span class="en-content">Engine light on? Strange noise? Vibration? Write symptoms, let CarFix AI diagnose instantly! 💡 Free download, use immediately!</span>
+              <span class="nl-content">Motor lampje aan? Vreemd geluid? Trilling? Schrijf symptomen, laat CarFix AI direct diagnosticeren! 💡 Gratis download, direct gebruiken!</span>
+              <span class="da-content">Motor lys tændt? Mærkelig lyd? Vibration? Skriv symptomer, lad CarFix AI diagnosticere øjeblikkeligt! 💡 Gratis download, brug med det samme!</span>
+              <span class="de-content">Motorlicht an? Seltsames Geräusch? Vibration? Schreiben Sie Symptome, lassen Sie CarFix AI sofort diagnostizieren! 💡 Kostenloser Download, sofort verwenden!</span>
+              <span class="it-content">Spia motore accesa? Rumore strano? Vibrazione? Scrivi i sintomi, lascia che CarFix AI diagnostichi istantaneamente! 💡 Download gratuito, usa subito!</span>
             </p>
             
                          <div class="hero-actions">
@@ -1949,6 +2249,10 @@
                  </svg>
                  <span class="tr-content">App Store'dan Ücretsiz İndir</span>
                  <span class="en-content">Free Download on App Store</span>
+                 <span class="nl-content">Gratis Download op App Store</span>
+                 <span class="da-content">Gratis Download på App Store</span>
+                 <span class="de-content">Kostenloser Download im App Store</span>
+                 <span class="it-content">Download Gratuito su App Store</span>
                </a>
                <a href="#" class="btn btn-primary animate-pulse btn-coming-soon" data-tooltip="Uygulama geliştirme aşamasında. Yakında yayında olacaktır." data-tooltip-en="App is in development. Coming soon." onclick="event.preventDefault(); trackAppDownload('Google Play - Coming Soon')">
                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -1956,10 +2260,18 @@
                  </svg>
                  <span class="tr-content">Google Play'den Ücretsiz İndir</span>
                  <span class="en-content">Free Download on Google Play</span>
+                 <span class="nl-content">Gratis Download op Google Play</span>
+                 <span class="da-content">Gratis Download på Google Play</span>
+                 <span class="de-content">Kostenloser Download bei Google Play</span>
+                 <span class="it-content">Download Gratuito su Google Play</span>
                </a>
                <a href="#features" class="btn btn-secondary">
                  <span class="tr-content">Daha Fazla Bilgi</span>
                  <span class="en-content">Learn More</span>
+                 <span class="nl-content">Meer Informatie</span>
+                 <span class="da-content">Lær Mere</span>
+                 <span class="de-content">Mehr Erfahren</span>
+                 <span class="it-content">Scopri Di Più</span>
                </a>
         </div>
       </div>
@@ -2005,10 +2317,18 @@
           <h2 class="section-title">
             <span class="tr-content">Güçlü AI Özellikleri</span>
             <span class="en-content">Powerful AI Features</span>
+            <span class="nl-content">Krachtige AI Functies</span>
+            <span class="da-content">Kraftfulde AI Funktioner</span>
+            <span class="de-content">Leistungsstarke KI-Funktionen</span>
+            <span class="it-content">Funzionalità AI Potenti</span>
           </h2>
           <p class="section-subtitle">
             <span class="tr-content">Zamandan kazandıran, güven veren ve aksiyona yönlendiren araçlar</span>
             <span class="en-content">Time-saving, reliable tools that guide you to action</span>
+            <span class="nl-content">Tijdbesparende, betrouwbare tools die u naar actie leiden</span>
+            <span class="da-content">Tidssparende, pålidelige værktøjer der guider dig til handling</span>
+            <span class="de-content">Zeitsparende, zuverlässige Tools, die Sie zum Handeln führen</span>
+            <span class="it-content">Strumenti affidabili che fanno risparmiare tempo e ti guidano all'azione</span>
           </p>
           </div>
         
@@ -2018,10 +2338,18 @@
              <h3 class="feature-title">
                <span class="tr-content">AI Destekli Teşhis</span>
                <span class="en-content">AI-Powered Diagnosis</span>
+               <span class="nl-content">AI-ondersteunde Diagnose</span>
+               <span class="da-content">AI-drevet Diagnose</span>
+               <span class="de-content">KI-gestützte Diagnose</span>
+               <span class="it-content">Diagnosi Supportata da AI</span>
              </h3>
              <p class="feature-description">
                <span class="tr-content">Gelişmiş makine öğrenmesi algoritmaları ile belirtilerden anında arıza tespiti</span>
                <span class="en-content">Advanced machine learning algorithms for instant fault detection from symptoms</span>
+               <span class="nl-content">Geavanceerde machine learning algoritmes voor directe foutdetectie uit symptomen</span>
+               <span class="da-content">Avancerede maskinlæringsalgoritmer til øjeblikkelig fejldetektion fra symptomer</span>
+               <span class="de-content">Fortgeschrittene Machine-Learning-Algorithmen für sofortige Fehlererkennung aus Symptomen</span>
+               <span class="it-content">Algoritmi avanzati di machine learning per il rilevamento istantaneo di guasti dai sintomi</span>
              </p>
              
           </div>
@@ -2031,10 +2359,18 @@
             <h3 class="feature-title">
               <span class="tr-content">Kapsamlı Veritabanı</span>
               <span class="en-content">Comprehensive Database</span>
+              <span class="nl-content">Uitgebreide Database</span>
+              <span class="da-content">Omfattende Database</span>
+              <span class="de-content">Umfassende Datenbank</span>
+              <span class="it-content">Database Completa</span>
             </h3>
             <p class="feature-description">
               <span class="tr-content">Binlerce araç modeli ve arıza senaryosu ile geniş bilgi tabanı</span>
               <span class="en-content">Extensive knowledge base with thousands of vehicle models and fault scenarios</span>
+              <span class="nl-content">Uitgebreide kennisbank met duizenden voertuigmodellen en foutscenario's</span>
+              <span class="da-content">Omfattende vidensbase med tusindvis af køretøjsmodeller og fejlscenarier</span>
+              <span class="de-content">Umfangreiche Wissensdatenbank mit Tausenden von Fahrzeugmodellen und Fehlerszenarien</span>
+              <span class="it-content">Base di conoscenza estesa con migliaia di modelli di veicoli e scenari di guasti</span>
             </p>
           </div>
           
@@ -2043,10 +2379,18 @@
             <h3 class="feature-title">
               <span class="tr-content">Kolay Kullanım</span>
               <span class="en-content">Easy to Use</span>
+              <span class="nl-content">Gebruiksvriendelijk</span>
+              <span class="da-content">Nem at Bruge</span>
+              <span class="de-content">Einfach zu Verwenden</span>
+              <span class="it-content">Facile da Usare</span>
             </h3>
             <p class="feature-description">
               <span class="tr-content">Sadece belirtileri yazın, anında sonuç alın. OBD2 cihazı gerekmez</span>
               <span class="en-content">Just describe symptoms and get instant results. No OBD2 device required</span>
+              <span class="nl-content">Beschrijf gewoon symptomen en krijg directe resultaten. Geen OBD2 apparaat nodig</span>
+              <span class="da-content">Beskriv bare symptomer og få øjeblikkelige resultater. Ingen OBD2 enhed påkrævet</span>
+              <span class="de-content">Beschreiben Sie einfach Symptome und erhalten Sie sofortige Ergebnisse. Kein OBD2-Gerät erforderlich</span>
+              <span class="it-content">Descrivi semplicemente i sintomi e ottieni risultati istantanei. Nessun dispositivo OBD2 richiesto</span>
             </p>
           </div>
           
@@ -2055,10 +2399,18 @@
             <h3 class="feature-title">
               <span class="tr-content">Doğru Sonuçlar</span>
               <span class="en-content">Accurate Results</span>
+              <span class="nl-content">Nauwkeurige Resultaten</span>
+              <span class="da-content">Nøjagtige Resultater</span>
+              <span class="de-content">Genaue Ergebnisse</span>
+              <span class="it-content">Risultati Precisi</span>
             </h3>
             <p class="feature-description">
               <span class="tr-content">Detaylı arıza bilgileri, risk seviyeleri ve çözüm önerileri</span>
               <span class="en-content">Detailed fault information, risk levels, and solution recommendations</span>
+              <span class="nl-content">Gedetailleerde foutinformatie, risiconiveaus en oplossingsaanbevelingen</span>
+              <span class="da-content">Detaljerede fejlinformationer, risikoniveauer og løsningsanbefalinger</span>
+              <span class="de-content">Detaillierte Fehlerinformationen, Risikostufen und Lösungsempfehlungen</span>
+              <span class="it-content">Informazioni dettagliate sui guasti, livelli di rischio e raccomandazioni per le soluzioni</span>
             </p>
           </div>
           
@@ -2067,10 +2419,18 @@
             <h3 class="feature-title">
               <span class="tr-content">Gizlilik Öncelikli</span>
               <span class="en-content">Privacy First</span>
+              <span class="nl-content">Privacy Eerst</span>
+              <span class="da-content">Privatliv Først</span>
+              <span class="de-content">Datenschutz Zuerst</span>
+              <span class="it-content">Privacy Prima</span>
             </h3>
             <p class="feature-description">
               <span class="tr-content">Verileriniz güvenle işlenir, hiçbir kişisel bilgi toplanmaz</span>
               <span class="en-content">Your data is processed securely with no personal information collected</span>
+              <span class="nl-content">Uw gegevens worden veilig verwerkt zonder persoonlijke informatie te verzamelen</span>
+              <span class="da-content">Dine data behandles sikkert uden at indsamle personlige oplysninger</span>
+              <span class="de-content">Ihre Daten werden sicher verarbeitet, ohne persönliche Informationen zu sammeln</span>
+              <span class="it-content">I tuoi dati vengono elaborati in modo sicuro senza raccogliere informazioni personali</span>
             </p>
           </div>
           
@@ -2079,10 +2439,18 @@
             <h3 class="feature-title">
               <span class="tr-content">Reklamsız Deneyim</span>
               <span class="en-content">Ad-Free Experience</span>
+              <span class="nl-content">Advertentie-vrije Ervaring</span>
+              <span class="da-content">Reklame-fri Oplevelse</span>
+              <span class="de-content">Werbefreie Erfahrung</span>
+              <span class="it-content">Esperienza Senza Pubblicità</span>
             </h3>
             <p class="feature-description">
               <span class="tr-content">Premium versiyonda kesintisiz araç keşfi, reklam yok</span>
               <span class="en-content">Uninterrupted car exploration without advertisements in premium version</span>
+              <span class="nl-content">Ononderbroken auto-verkenning zonder advertenties in premium versie</span>
+              <span class="da-content">Uafbrudt bil-udforskning uden reklamer i premium version</span>
+              <span class="de-content">Unterbrechungsfreie Auto-Erkundung ohne Werbung in der Premium-Version</span>
+              <span class="it-content">Esplorazione auto ininterrotta senza pubblicità nella versione premium</span>
             </p>
           </div>
         </div>
@@ -2096,10 +2464,18 @@
            <h2 class="section-title">
              <span class="tr-content">Nasıl Çalışır?</span>
              <span class="en-content">How It Works</span>
+             <span class="nl-content">Hoe Het Werkt</span>
+             <span class="da-content">Sådan Fungerer Det</span>
+             <span class="de-content">Wie Es Funktioniert</span>
+             <span class="it-content">Come Funziona</span>
            </h2>
            <p class="section-subtitle">
              <span class="tr-content">Sadece 3 basit adımda araç arızanızı teşhis edin</span>
              <span class="en-content">Diagnose your car problem in just 3 simple steps</span>
+             <span class="nl-content">Diagnoseer uw auto probleem in slechts 3 eenvoudige stappen</span>
+             <span class="da-content">Diagnosticer dit bilproblem i kun 3 enkle trin</span>
+             <span class="de-content">Diagnostizieren Sie Ihr Auto-Problem in nur 3 einfachen Schritten</span>
+             <span class="it-content">Diagnostica il problema della tua auto in soli 3 semplici passaggi</span>
            </p>
           </div>
 
@@ -2113,14 +2489,26 @@
                <h3>
                  <span class="tr-content">Belirtileri Açıklayın</span>
                  <span class="en-content">Describe Symptoms</span>
+                 <span class="nl-content">Beschrijf Symptomen</span>
+                 <span class="da-content">Beskriv Symptomer</span>
+                 <span class="de-content">Beschreiben Sie Symptome</span>
+                 <span class="it-content">Descrivi i Sintomi</span>
                </h3>
                <p>
                  <span class="tr-content">Aracınızda gözlemlediğiniz problemleri detaylı bir şekilde yazın. Motor sesi, titreşim, ışık uyarıları...</span>
                  <span class="en-content">Describe the problems you observe in your vehicle in detail. Engine sounds, vibrations, warning lights...</span>
+                 <span class="nl-content">Beschrijf de problemen die u in uw voertuig waarneemt in detail. Motor geluiden, trillingen, waarschuwingslichten...</span>
+                 <span class="da-content">Beskriv problemerne du observerer i dit køretøj i detaljer. Motor lyde, vibrationer, advarselslys...</span>
+                 <span class="de-content">Beschreiben Sie die Probleme, die Sie in Ihrem Fahrzeug beobachten, im Detail. Motorgeräusche, Vibrationen, Warnlichter...</span>
+                 <span class="it-content">Descrivi in dettaglio i problemi che osservi nel tuo veicolo. Suoni del motore, vibrazioni, luci di avvertimento...</span>
                </p>
                <p >
                  <span class="tr-content">"Soğuk havada motor titriyor ve rölantide dalgalanma var"</span>
                  <span class="en-content">"Engine vibrates in cold weather and there's fluctuation at idle"</span>
+                 <span class="nl-content">"Motor trilt in koud weer en er is fluctuatie op stationair toerental"</span>
+                 <span class="da-content">"Motor vibrerer i koldt vejr og der er fluktuation på tomgang"</span>
+                 <span class="de-content">"Motor vibriert bei kaltem Wetter und es gibt Schwankungen im Leerlauf"</span>
+                 <span class="it-content">"Il motore vibra con il freddo e c'è fluttuazione al minimo"</span>
                </p>
           </div>
         </div>
@@ -2136,16 +2524,28 @@
                <h3>
                  <span class="tr-content">AI Analiz Yapar</span>
                  <span class="en-content">AI Analyzes</span>
+                 <span class="nl-content">AI Analyseert</span>
+                 <span class="da-content">AI Analyserer</span>
+                 <span class="de-content">KI Analysiert</span>
+                 <span class="it-content">AI Analizza</span>
                </h3>
                <p>
                  <span class="tr-content">Gelişmiş yapay zeka algoritmaları, binlerce arıza senaryosunu analiz ederek en olası nedenleri belirler.</span>
                  <span class="en-content">Advanced AI algorithms analyze thousands of fault scenarios to determine the most likely causes.</span>
+                 <span class="nl-content">Geavanceerde AI algoritmes analyseren duizenden foutscenario's om de meest waarschijnlijke oorzaken te bepalen.</span>
+                 <span class="da-content">Avancerede AI algoritmer analyserer tusindvis af fejlscenarier for at bestemme de mest sandsynlige årsager.</span>
+                 <span class="de-content">Fortgeschrittene KI-Algorithmen analysieren Tausende von Fehlerszenarien, um die wahrscheinlichsten Ursachen zu bestimmen.</span>
+                 <span class="it-content">Algoritmi AI avanzati analizzano migliaia di scenari di guasti per determinare le cause più probabili.</span>
                </p>
                <div class="ai-processing">
                  <div class="processing-bar"></div>
                  <span class="processing-text">
                    <span class="tr-content">Analiz ediliyor...</span>
                    <span class="en-content">Analyzing...</span>
+                   <span class="nl-content">Analyseren...</span>
+                   <span class="da-content">Analyserer...</span>
+                   <span class="de-content">Analysiere...</span>
+                   <span class="it-content">Analizzando...</span>
                  </span>
           </div>
           </div>
@@ -2162,21 +2562,37 @@
                <h3>
                  <span class="tr-content">Çözüm Önerileri Alın</span>
                  <span class="en-content">Get Solution Recommendations</span>
+                 <span class="nl-content">Krijg Oplossingsaanbevelingen</span>
+                 <span class="da-content">Få Løsningsanbefalinger</span>
+                 <span class="de-content">Lösungsempfehlungen Erhalten</span>
+                 <span class="it-content">Ottieni Raccomandazioni per le Soluzioni</span>
                </h3>
                <p>
                  <span class="tr-content">Olası nedenler, risk seviyeleri ve adım adım çözüm önerileri ile aracınızı tamir edin.</span>
                  <span class="en-content">Fix your vehicle with possible causes, risk levels, and step-by-step solution recommendations.</span>
+                 <span class="nl-content">Repareer uw voertuig met mogelijke oorzaken, risiconiveaus en stap-voor-stap oplossingsaanbevelingen.</span>
+                 <span class="da-content">Reparer dit køretøj med mulige årsager, risikoniveauer og trin-for-trin løsningsanbefalinger.</span>
+                 <span class="de-content">Reparieren Sie Ihr Fahrzeug mit möglichen Ursachen, Risikostufen und schrittweisen Lösungsempfehlungen.</span>
+                 <span class="it-content">Ripara il tuo veicolo con possibili cause, livelli di rischio e raccomandazioni di soluzione passo dopo passo.</span>
                </p>
                <div class="solution-preview">
                  <div class="solution-item">
                    <span class="severity high"></span>
                    <span class="tr-content">Motor sensörü arızası</span>
                    <span class="en-content">Engine sensor failure</span>
+                   <span class="nl-content">Motor sensor storing</span>
+                   <span class="da-content">Motor sensor fejl</span>
+                   <span class="de-content">Motor-Sensor-Ausfall</span>
+                   <span class="it-content">Guasto sensore motore</span>
           </div>
                  <div class="solution-item">
                    <span class="severity medium"></span>
                    <span class="tr-content">Yakıt filtresi tıkanıklığı</span>
                    <span class="en-content">Fuel filter blockage</span>
+                   <span class="nl-content">Brandstoff filter verstopping</span>
+                   <span class="da-content">Brændstof filter blokering</span>
+                   <span class="de-content">Kraftstofffilter-Verstopfung</span>
+                   <span class="it-content">Intasamento filtro carburante</span>
                  </div>
                </div>
              </div>
@@ -2188,6 +2604,10 @@
              <button class="workflow-btn dropdown-toggle">
                <span class="tr-content">Şimdi Dene</span>
                <span class="en-content">Try Now</span>
+               <span class="nl-content">Probeer Nu</span>
+               <span class="da-content">Prøv Nu</span>
+               <span class="de-content">Jetzt Ausprobieren</span>
+               <span class="it-content">Prova Ora</span>
                <span class="btn-icon">▼</span>
              </button>
              <div class="download-options">
@@ -2197,6 +2617,10 @@
                  </svg>
                  <span class="tr-content">App Store</span>
                  <span class="en-content">App Store</span>
+                 <span class="nl-content">App Store</span>
+                 <span class="da-content">App Store</span>
+                 <span class="de-content">App Store</span>
+                 <span class="it-content">App Store</span>
                </a>
                <a href="#" class="download-option btn-coming-soon" data-tooltip="Uygulama geliştirme aşamasında. Yakında yayında olacaktır." data-tooltip-en="App is in development. Coming soon." onclick="event.preventDefault(); trackAppDownload('Google Play Dropdown - Coming Soon')">
                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -2204,9 +2628,192 @@
                  </svg>
                  <span class="tr-content">Google Play</span>
                  <span class="en-content">Google Play</span>
+                 <span class="nl-content">Google Play</span>
+                 <span class="da-content">Google Play</span>
+                 <span class="de-content">Google Play</span>
+                 <span class="it-content">Google Play</span>
                </a>
              </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+      <div class="container">
+        <div class="section-header">
+          <h2>
+            <span class="tr-content">🚗 Araç Bakım Blogu</span>
+            <span class="en-content">🚗 Car Maintenance Blog</span>
+            <span class="nl-content">🚗 Auto Onderhoud Blog</span>
+            <span class="da-content">🚗 Bil Vedligeholdelse Blog</span>
+            <span class="de-content">🚗 Auto Wartung Blog</span>
+            <span class="it-content">🚗 Blog Manutenzione Auto</span>
+          </h2>
+          <p>
+            <span class="tr-content">Araç bakımı, arıza teşhisi ve yapay zeka teknolojileri hakkında güncel bilgiler</span>
+            <span class="en-content">Latest information about car maintenance, diagnostics and AI technologies</span>
+            <span class="nl-content">Laatste informatie over auto onderhoud, diagnostiek en AI technologieën</span>
+            <span class="da-content">Seneste information om bil vedligeholdelse, diagnostik og AI teknologier</span>
+            <span class="de-content">Neueste Informationen über Auto-Wartung, Diagnostik und KI-Technologien</span>
+            <span class="it-content">Ultime informazioni su manutenzione auto, diagnostica e tecnologie AI</span>
+          </p>
+        </div>
+        
+        <div class="blog-grid">
+          <article class="blog-card">
+            <div class="blog-image">
+              <img src="https://hips.hearstapps.com/hmg-prod/images/adobestock-121798525-1616195640.jpeg?crop=1.00xw:1.00xh;0,0&resize=500:*" alt="Motor ışığı yanan araç" />
+              <div class="blog-category">
+                <span class="tr-content">Arıza Teşhisi</span>
+                <span class="en-content">Diagnostics</span>
+                <span class="nl-content">Diagnostiek</span>
+                <span class="da-content">Diagnostik</span>
+                <span class="de-content">Diagnostik</span>
+                <span class="it-content">Diagnostica</span>
+              </div>
+            </div>
+            <div class="blog-content">
+              <h3>
+                <span class="tr-content">Motor Işığı Yanıyor: Ne Yapmalısınız? (2025 Rehberi)</span>
+                <span class="en-content">Engine Light On: What Should You Do? (2025 Guide)</span>
+                <span class="nl-content">Motor Lampje Aan: Wat Moet Je Doen? (2025 Gids)</span>
+                <span class="da-content">Motor Lys Tændt: Hvad Skal Du Gøre? (2025 Guide)</span>
+                <span class="de-content">Motorlicht An: Was Sollten Sie Tun? (2025 Leitfaden)</span>
+                <span class="it-content">Spia Motore Accesa: Cosa Dovresti Fare? (Guida 2025)</span>
+              </h3>
+              <p>
+                <span class="tr-content">Motor ışığınız yanıyor mu? Endişelenmeyin! Bu kapsamlı rehberde motor ışığının anlamları, acil durumlar ve çözüm yollarını öğrenin.</span>
+                <span class="en-content">Is your engine light on? Don't worry! Learn the meanings of engine light, emergency situations and solutions in this comprehensive guide.</span>
+                <span class="nl-content">Brandt uw motor lampje? Maak je geen zorgen! Leer de betekenissen van motor lampje, noodsituaties en oplossingen in deze uitgebreide gids.</span>
+                <span class="da-content">Er dit motor lys tændt? Vær ikke bekymret! Lær betydningerne af motor lys, nødsituationer og løsninger i denne omfattende guide.</span>
+                <span class="de-content">Ist Ihr Motorlicht an? Keine Sorge! Lernen Sie die Bedeutungen des Motorlichts, Notfälle und Lösungen in diesem umfassenden Leitfaden.</span>
+                <span class="it-content">È accesa la spia del motore? Non preoccuparti! Impara i significati della spia motore, le situazioni di emergenza e le soluzioni in questa guida completa.</span>
+              </p>
+              <div class="blog-meta">
+                <span class="blog-date">15 Ocak 2025</span>
+                <span class="blog-read-time">
+                  <span class="tr-content">5 dk okuma</span>
+                  <span class="en-content">5 min read</span>
+                  <span class="nl-content">5 min lezen</span>
+                  <span class="da-content">5 min læsning</span>
+                  <span class="de-content">5 Min. Lesezeit</span>
+                  <span class="it-content">5 min lettura</span>
+                </span>
+              </div>
+              <a href="blog/motor-isigi-yaniyor-ne-yapmalisiniz.html" class="blog-link">
+                <span class="tr-content">Devamını Oku →</span>
+                <span class="en-content">Read More →</span>
+                <span class="nl-content">Lees Meer →</span>
+                <span class="da-content">Læs Mere →</span>
+                <span class="de-content">Mehr Lesen →</span>
+                <span class="it-content">Leggi Di Più →</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-image">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Araç sarsıntısı problemi" />
+              <div class="blog-category">
+                <span class="tr-content">Bakım</span>
+                <span class="en-content">Maintenance</span>
+                <span class="nl-content">Onderhoud</span>
+                <span class="da-content">Vedligeholdelse</span>
+                <span class="de-content">Wartung</span>
+                <span class="it-content">Manutenzione</span>
+              </div>
+            </div>
+            <div class="blog-content">
+              <h3>
+                <span class="tr-content">Araç Sarsıntısı Nedenleri ve Çözümleri</span>
+                <span class="en-content">Car Vibration Causes and Solutions</span>
+                <span class="nl-content">Auto Trilling Oorzaken en Oplossingen</span>
+                <span class="da-content">Bil Vibration Årsager og Løsninger</span>
+                <span class="de-content">Auto Vibration Ursachen und Lösungen</span>
+                <span class="it-content">Cause e Soluzioni delle Vibrazioni Auto</span>
+              </h3>
+              <p>
+                <span class="tr-content">Aracınızda sarsıntı mı var? Bu yazıda sarsıntı türleri, teşhis yöntemleri ve maliyet bilgilerini bulacaksınız.</span>
+                <span class="en-content">Does your car vibrate? In this article, you'll find vibration types, diagnostic methods and cost information.</span>
+                <span class="nl-content">Trilt uw auto? In dit artikel vindt u trillingstypen, diagnostische methoden en kosteninformatie.</span>
+                <span class="da-content">Vibrerer din bil? I denne artikel finder du vibrationstyper, diagnostiske metoder og omkostningsinformation.</span>
+                <span class="de-content">Vibriert Ihr Auto? In diesem Artikel finden Sie Vibrationstypen, diagnostische Methoden und Kosteninformationen.</span>
+                <span class="it-content">La tua auto vibra? In questo articolo troverai tipi di vibrazione, metodi diagnostici e informazioni sui costi.</span>
+              </p>
+              <div class="blog-meta">
+                <span class="blog-date">12 Ocak 2025</span>
+                <span class="blog-read-time">
+                  <span class="tr-content">4 dk okuma</span>
+                  <span class="en-content">4 min read</span>
+                  <span class="nl-content">4 min lezen</span>
+                  <span class="da-content">4 min læsning</span>
+                  <span class="de-content">4 Min. Lesezeit</span>
+                  <span class="it-content">4 min lettura</span>
+                </span>
+              </div>
+              <a href="blog/arac-sarsintisi-nedenleri-ve-cozumleri.html" class="blog-link">
+                <span class="tr-content">Devamını Oku →</span>
+                <span class="en-content">Read More →</span>
+                <span class="nl-content">Lees Meer →</span>
+                <span class="da-content">Læs Mere →</span>
+                <span class="de-content">Mehr Lesen →</span>
+                <span class="it-content">Leggi Di Più →</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-image">
+              <img src="https://media.istockphoto.com/id/1364951743/tr/fotoğraf/checking-the-brake-discs-of-a-modern-car-vehicle-braking-system.jpg?s=612x612&w=0&k=20&c=C53SfsEesSkYoo8H8l55X7nh11avdal12i1wQaxB0ss=" alt="Fren sistemi arızası" />
+              <div class="blog-category">
+                <span class="tr-content">Güvenlik & Bakım</span>
+                <span class="en-content">Safety & Maintenance</span>
+                <span class="nl-content">Veiligheid & Onderhoud</span>
+                <span class="da-content">Sikkerhed & Vedligeholdelse</span>
+                <span class="de-content">Sicherheit & Wartung</span>
+                <span class="it-content">Sicurezza & Manutenzione</span>
+              </div>
+            </div>
+            <div class="blog-content">
+              <h3>
+                <span class="tr-content">Fren Sistemi Arızaları ve Bakımı: Kapsamlı Rehber</span>
+                <span class="en-content">Brake System Failures and Maintenance: Comprehensive Guide</span>
+                <span class="nl-content">Rem Systeem Storingen en Onderhoud: Uitgebreide Gids</span>
+                <span class="da-content">Bremsesystem Fejl og Vedligeholdelse: Omfattende Guide</span>
+                <span class="de-content">Bremssystem Ausfälle und Wartung: Umfassender Leitfaden</span>
+                <span class="it-content">Guasti Sistema Freni e Manutenzione: Guida Completa</span>
+              </h3>
+              <p>
+                <span class="tr-content">Fren sisteminizde problem mi var? Bu detaylı rehberde fren arızaları, bakım yöntemleri, maliyet bilgileri ve güvenlik önerilerini bulacaksınız.</span>
+                <span class="en-content">Having problems with your brake system? In this detailed guide, you'll find brake failures, maintenance methods, cost information and safety recommendations.</span>
+                <span class="nl-content">Heeft u problemen met uw remsysteem? In deze gedetailleerde gids vindt u remstoringen, onderhoudsmethoden, kosteninformatie en veiligheidsaanbevelingen.</span>
+                <span class="da-content">Har du problemer med dit bremsesystem? I denne detaljerede guide finder du bremsefejl, vedligeholdelsesmetoder, omkostningsinformation og sikkerhedsanbefalinger.</span>
+                <span class="de-content">Haben Sie Probleme mit Ihrem Bremssystem? In diesem detaillierten Leitfaden finden Sie Bremsausfälle, Wartungsmethoden, Kosteninformationen und Sicherheitsempfehlungen.</span>
+                <span class="it-content">Hai problemi con il sistema frenante? In questa guida dettagliata troverai guasti ai freni, metodi di manutenzione, informazioni sui costi e raccomandazioni di sicurezza.</span>
+              </p>
+              <div class="blog-meta">
+                <span class="blog-date">18 Ocak 2025</span>
+                <span class="blog-read-time">
+                  <span class="tr-content">6 dk okuma</span>
+                  <span class="en-content">6 min read</span>
+                  <span class="nl-content">6 min lezen</span>
+                  <span class="da-content">6 min læsning</span>
+                  <span class="de-content">6 Min. Lesezeit</span>
+                  <span class="it-content">6 min lettura</span>
+                </span>
+              </div>
+              <a href="blog/fren-sistemi-arizalari-ve-bakimi.html" class="blog-link">
+                <span class="tr-content">Devamını Oku →</span>
+                <span class="en-content">Read More →</span>
+                <span class="nl-content">Lees Meer →</span>
+                <span class="da-content">Læs Mere →</span>
+                <span class="de-content">Mehr Lesen →</span>
+                <span class="it-content">Leggi Di Più →</span>
+              </a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -2300,6 +2907,10 @@
           <p>
             <span class="tr-content">Yapay zeka destekli araç arıza teşhis uygulaması</span>
             <span class="en-content">AI-powered car fault diagnosis app</span>
+            <span class="nl-content">AI-aangedreven auto foutdiagnose app</span>
+            <span class="da-content">AI-drevet bil fejldiagnose app</span>
+            <span class="de-content">KI-gestützte Auto-Fehlerdiagnose App</span>
+            <span class="it-content">App di diagnosi guasti auto supportata da AI</span>
           </p>
         </div>
         
@@ -2307,18 +2918,34 @@
           <h3>
             <span class="tr-content">Bağlantılar</span>
             <span class="en-content">Links</span>
+            <span class="nl-content">Links</span>
+            <span class="da-content">Links</span>
+            <span class="de-content">Links</span>
+            <span class="it-content">Link</span>
           </h3>
           <p><a href="#features">
             <span class="tr-content">Özellikler</span>
             <span class="en-content">Features</span>
+            <span class="nl-content">Functies</span>
+            <span class="da-content">Funktioner</span>
+            <span class="de-content">Funktionen</span>
+            <span class="it-content">Caratteristiche</span>
           </a></p>
           <p><a href="#how-it-works">
             <span class="tr-content">Nasıl Çalışır</span>
             <span class="en-content">How It Works</span>
+            <span class="nl-content">Hoe Het Werkt</span>
+            <span class="da-content">Sådan Fungerer Det</span>
+            <span class="de-content">Wie Es Funktioniert</span>
+            <span class="it-content">Come Funziona</span>
           </a></p>
           <p><a href="#reviews">
             <span class="tr-content">Yorumlar</span>
             <span class="en-content">Reviews</span>
+            <span class="nl-content">Beoordelingen</span>
+            <span class="da-content">Anmeldelser</span>
+            <span class="de-content">Bewertungen</span>
+            <span class="it-content">Recensioni</span>
           </a></p>
       </div>
         
@@ -2326,18 +2953,34 @@
           <h3>
             <span class="tr-content">Destek</span>
             <span class="en-content">Support</span>
+            <span class="nl-content">Ondersteuning</span>
+            <span class="da-content">Support</span>
+            <span class="de-content">Support</span>
+            <span class="it-content">Supporto</span>
           </h3>
           <p><a href="mailto:hello@carfixai.app">
             <span class="tr-content">İletişim</span>
             <span class="en-content">Contact</span>
+            <span class="nl-content">Contact</span>
+            <span class="da-content">Kontakt</span>
+            <span class="de-content">Kontakt</span>
+            <span class="it-content">Contatto</span>
           </a></p>
           <p><a href="/privacy.html">
             <span class="tr-content">Gizlilik</span>
             <span class="en-content">Privacy</span>
+            <span class="nl-content">Privacy</span>
+            <span class="da-content">Privatliv</span>
+            <span class="de-content">Datenschutz</span>
+            <span class="it-content">Privacy</span>
           </a></p>
           <p><a href="/terms.html">
             <span class="tr-content">Kullanım Koşulları</span>
             <span class="en-content">Terms of Use</span>
+            <span class="nl-content">Gebruiksvoorwaarden</span>
+            <span class="da-content">Brugsbetingelser</span>
+            <span class="de-content">Nutzungsbedingungen</span>
+            <span class="it-content">Termini di Utilizzo</span>
           </a></p>
         </div>
       </div>
@@ -2346,6 +2989,10 @@
         <p>© <span id="current-year"></span> CarFix AI. 
           <span class="tr-content">Tüm hakları saklıdır.</span>
           <span class="en-content">All rights reserved.</span>
+          <span class="nl-content">Alle rechten voorbehouden.</span>
+          <span class="da-content">Alle rettigheder forbeholdes.</span>
+          <span class="de-content">Alle Rechte vorbehalten.</span>
+          <span class="it-content">Tutti i diritti riservati.</span>
         </p>
       </div>
     </div>
@@ -2371,29 +3018,71 @@
       }
     }
 
-    // Language Toggle
-    function toggleLanguage() {
+    // Language Functions
+    function setLanguage(lang) {
       const body = document.body;
-      const currentLang = body.getAttribute('data-lang');
-      const newLang = currentLang === 'tr' ? 'en' : 'tr';
-      
-      body.setAttribute('data-lang', newLang);
-      localStorage.setItem('language', newLang);
+      body.setAttribute('data-lang', lang);
+      localStorage.setItem('language', lang);
       
       // Update language toggle button
       const langToggle = document.querySelector('.language-toggle');
-      langToggle.innerHTML = newLang === 'tr' ? 'EN' : 'TR';
+      const langNames = {
+        'tr': '🇹🇷',
+        'en': '🇺🇸', 
+        'nl': '🇳🇱',
+        'da': '🇩🇰',
+        'de': '🇩🇪',
+        'it': '🇮🇹'
+      };
+      langToggle.innerHTML = `<span>${langNames[lang]}</span>`;
       
+      // Update page title and meta description
+      updatePageContent(lang);
+      
+      // Track language change
+      if (typeof trackLanguageChange === 'function') {
+        trackLanguageChange(lang);
+      }
+    }
+
+    function toggleLanguage() {
+      const body = document.body;
+      const currentLang = body.getAttribute('data-lang') || 'tr';
+      const languages = ['tr', 'en', 'nl', 'da', 'de', 'it'];
+      const currentIndex = languages.indexOf(currentLang);
+      const nextIndex = (currentIndex + 1) % languages.length;
+      const newLang = languages[nextIndex];
+      
+      setLanguage(newLang);
+    }
+
+    function updatePageContent(lang) {
       // Update page title and meta description
       const title = document.querySelector('title');
       const metaDesc = document.querySelector('meta[name="description"]');
       
       if (title) {
-        title.textContent = newLang === 'tr' ? title.getAttribute('data-tr') : title.getAttribute('data-en');
+        const titles = {
+          'tr': 'CarFix AI - Yapay Zeka Destekli Araç Arıza Teşhisi',
+          'en': 'CarFix AI - AI-Powered Car Fault Diagnosis',
+          'nl': 'CarFix AI - AI-aangedreven Auto Diagnose',
+          'da': 'CarFix AI - AI-drevet Bil Fejldiagnose',
+          'de': 'CarFix AI - KI-gestützte Fahrzeugdiagnose',
+          'it': 'CarFix AI - Diagnosi Guasti Auto con AI'
+        };
+        title.textContent = titles[lang] || titles['tr'];
       }
       
       if (metaDesc) {
-        metaDesc.setAttribute('content', newLang === 'tr' ? metaDesc.getAttribute('data-tr') : metaDesc.getAttribute('data-en'));
+        const descriptions = {
+          'tr': 'CarFix AI ile aracınızın arızalarını yapay zeka teknolojisi ile anında teşhis edin. Ücretsiz indirin ve araç sorunlarınızı çözün.',
+          'en': 'Diagnose your car faults instantly with CarFix AI using artificial intelligence technology. Download for free and solve your car problems.',
+          'nl': 'Diagnoseer uw auto-gebreken direct met CarFix AI met behulp van kunstmatige intelligentie technologie. Download gratis en los uw auto-problemen op.',
+          'da': 'Diagnosticer dine bilfejl øjeblikkeligt med CarFix AI ved hjælp af kunstig intelligens teknologi. Download gratis og løs dine bilproblemer.',
+          'de': 'Diagnostizieren Sie Ihre Autofehler sofort mit CarFix AI mit künstlicher Intelligenz-Technologie. Kostenlos herunterladen und Ihre Autoprobleme lösen.',
+          'it': 'Diagnostica i guasti della tua auto istantaneamente con CarFix AI utilizzando la tecnologia di intelligenza artificiale. Scarica gratuitamente e risolvi i problemi della tua auto.'
+        };
+        metaDesc.setAttribute('content', descriptions[lang] || descriptions['tr']);
       }
       
       // Update tooltips for coming soon buttons
@@ -2530,7 +3219,17 @@
        const langToggle = document.querySelector('.language-toggle');
        
        themeToggle.innerHTML = savedTheme === 'light' ? '🌙' : '☀️';
-       langToggle.innerHTML = savedLang === 'tr' ? 'EN' : 'TR';
+       
+       // Set initial language flag
+       const langFlags = {
+         'tr': '🇹🇷',
+         'en': '🇺🇸', 
+         'nl': '🇳🇱',
+         'da': '🇩🇰',
+         'de': '🇩🇪',
+         'it': '🇮🇹'
+       };
+       langToggle.innerHTML = `<span>${langFlags[savedLang] || '🇹🇷'}</span>`;
        
        // Initialize slider
        const slides = document.querySelectorAll('.slide');
